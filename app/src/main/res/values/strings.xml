@@ -7,4 +7,7 @@
 
     <!-- Fragment Developer -->
     <string name="fragment_developer_title">Fragment Developer title</string>
+
+    <!-- Github Repolist -->
+    <string name="github_repolist_title">Github Repolist title</string>
 </resources>
