@@ -2,6 +2,7 @@ package net.thebix.droidpet
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import net.thebix.droidpet.developer.DeveloperFragment
 
 class DroidpetActivity : AppCompatActivity() {
 

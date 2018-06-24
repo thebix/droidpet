@@ -1,10 +1,11 @@
-package net.thebix.droidpet
+package net.thebix.droidpet.developer
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import net.thebix.droidpet.R
 
 class DeveloperFragment : Fragment() {
 
