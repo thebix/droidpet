@@ -4,4 +4,7 @@
 
     <!-- Activity Droidpet -->
     <string name="activity_droidpet_title">Activity Droidpet title</string>
+
+    <!-- Fragment Developer -->
+    <string name="fragment_developer_title">Fragment Developer title</string>
 </resources>
