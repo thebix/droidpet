@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Droidpet</string>
+    <string name="activity_droidpet_label">Droidpet Activity label</string>
+
+    <!-- Activity Droidpet -->
+    <string name="activity_droidpet_title">Activity Droidpet title</string>
 </resources>
