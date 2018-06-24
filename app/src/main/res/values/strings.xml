@@ -5,8 +5,9 @@
     <!-- Activity Droidpet -->
     <string name="activity_droidpet_title">Activity Droidpet title</string>
 
-    <!-- Fragment Developer -->
+    <!-- Developer Fragment-->
     <string name="fragment_developer_title">Fragment Developer title</string>
+    <string name="fragment_developer_repolist_button_title">Github repo list</string>
 
     <!-- Github Repolist -->
     <string name="github_repolist_title">Github Repolist title</string>
