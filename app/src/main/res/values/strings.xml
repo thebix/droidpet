@@ -11,4 +11,5 @@
 
     <!-- Github Repolist -->
     <string name="github_repolist_title">Github Repolist title</string>
+    <string name="github_repolist_network_error">Error while requesting remote service</string>
 </resources>

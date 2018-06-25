@@ -11,4 +11,9 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/github_repolist_title" />
 
+    <TextView
+        android:id="@+id/fragment_github_repolist_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
