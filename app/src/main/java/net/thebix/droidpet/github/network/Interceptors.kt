@@ -4,7 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber
 
-class LiggingInterceptor : Interceptor {
+class LoggingInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         Timber.d("Sending request url: <${request.url()}>, headers: <${request.headers()}>")

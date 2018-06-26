@@ -8,46 +8,31 @@ import android.view.ViewGroup
 import android.widget.TextView
 import net.thebix.droidpet.R
 import net.thebix.droidpet.github.api.GithubService
+import net.thebix.droidpet.github.api.di.ContextModule
+import net.thebix.droidpet.github.api.di.DaggerGithubComponent
 import net.thebix.droidpet.github.api.models.Repo
-import net.thebix.droidpet.github.network.LiggingInterceptor
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 class RepolistFragment : Fragment() {
 
     companion object {
         fun newInstance() = RepolistFragment()
-
-        private const val URL_GITHUB_API = "https://api.github.com/"
     }
 
     private val repolistItems get() = view!!.findViewById(R.id.fragment_github_repolist_items) as TextView
 
-    private lateinit var retrofit: Retrofit
-    private lateinit var okHttpLoggedClient: OkHttpClient
     private lateinit var githubService: GithubService
-    private lateinit var gsonConverterFactory: GsonConverterFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        okHttpLoggedClient = OkHttpClient.Builder()
-            .addInterceptor(LiggingInterceptor())
+        val githubComponent = DaggerGithubComponent.builder()
+            .contextModule(ContextModule(context!!))
             .build()
-
-        gsonConverterFactory = GsonConverterFactory.create()
-
-        retrofit = Retrofit.Builder()
-            .client(okHttpLoggedClient)
-            .addConverterFactory(gsonConverterFactory)
-            .baseUrl(URL_GITHUB_API)
-            .build()
-        githubService = retrofit.create(GithubService::class.java)
+        githubService = githubComponent.getGithubService()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
