@@ -40,7 +40,7 @@ class OkHttpClientModule {
 
     @Provides
     @GithubScope
-    fun provideCahceFile(@ApplicationContext context: Context): File =
+    fun provideCacheFile(@ApplicationContext context: Context): File =
         File(context.cacheDir, "okHttpCache")
             .apply {
                 mkdirs()
