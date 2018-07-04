@@ -8,6 +8,7 @@ import dagger.Provides
 class ContextModule(private val context: Context) {
 
     @Provides
+    @GithubScope
     fun provideApplicationContext(): Context =
         context.applicationContext
 }

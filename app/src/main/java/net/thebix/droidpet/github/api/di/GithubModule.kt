@@ -19,10 +19,12 @@ class GithubModule {
     }
 
     @Provides
+    @GithubScope
     fun provideGithubService(retrofit: Retrofit) =
         retrofit.create(GithubService::class.java)
 
     @Provides
+    @GithubScope
     fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory) =
         Retrofit.Builder()
             .client(okHttpClient)
@@ -31,6 +33,7 @@ class GithubModule {
             .build()
 
     @Provides
+    @GithubScope
     fun provideGsonConverterFactory(): GsonConverterFactory =
         GsonConverterFactory.create()
 }

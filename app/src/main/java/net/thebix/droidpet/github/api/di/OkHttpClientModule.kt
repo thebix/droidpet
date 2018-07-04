@@ -20,6 +20,7 @@ class OkHttpClientModule {
     }
 
     @Provides
+    @GithubScope
     fun provideOkHttpClient(loggingInterceptor: LoggingInterceptor, cache: Cache): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -28,14 +29,17 @@ class OkHttpClientModule {
 
     // TODO: change to @Binds
     @Provides
+    @GithubScope
     fun provideLoggingInterceptor(): LoggingInterceptor =
         LoggingInterceptor()
 
     @Provides
+    @GithubScope
     fun provideCache(cacheFile: File): Cache =
         Cache(cacheFile, CACHE_SIZE)
 
     @Provides
+    @GithubScope
     fun provideCahceFile(context: Context): File =
         File(context.cacheDir, "okHttpCache")
             .apply {
