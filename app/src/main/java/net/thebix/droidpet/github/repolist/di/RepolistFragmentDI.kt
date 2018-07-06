@@ -2,8 +2,8 @@ package net.thebix.droidpet.github.repolist.di
 
 import dagger.Component
 import dagger.Module
-import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.github.api.di.GithubComponent
+import net.thebix.droidpet.github.repolist.RepolistFragment
 import javax.inject.Scope
 
 @Scope
@@ -21,7 +21,7 @@ annotation class RepolistScope
 )
 interface RepolistComponent {
 
-    fun getGithubService(): GithubService
+    fun inject(repolistFragment: RepolistFragment)
 
 }
 

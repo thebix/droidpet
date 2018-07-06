@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import javax.inject.Inject
 
 class RepolistFragment : Fragment() {
 
@@ -25,7 +26,8 @@ class RepolistFragment : Fragment() {
 
     private val repolistItems get() = view!!.findViewById(R.id.fragment_github_repolist_items) as TextView
 
-    private lateinit var githubService: GithubService
+    @Inject
+    lateinit var githubService: GithubService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +36,8 @@ class RepolistFragment : Fragment() {
         val repolistComponent = DaggerRepolistComponent.builder()
             .githubComponent(droidpetAppComponent)
             .build()
+        repolistComponent.inject(this)
 
-        githubService = repolistComponent.getGithubService()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
