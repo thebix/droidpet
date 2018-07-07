@@ -1,17 +1,33 @@
 package net.thebix.droidpet.github.api.di
 
+import dagger.Component
 import dagger.Module
 import dagger.Provides
 import net.thebix.droidpet.github.api.GithubService
-import okhttp3.OkHttpClient
+import net.thebix.droidpet.network.di.NetworkComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Scope
 
-@Module(
-    includes = [
-        OkHttpClientModule::class
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class GithubScope
+
+@GithubScope
+@Component(
+    dependencies = [
+        NetworkComponent::class
+    ],
+    modules = [
+        GithubModule::class
     ]
 )
+interface GithubComponent {
+
+    fun getGithubService(): GithubService
+}
+
+
+@Module
 class GithubModule {
 
     companion object {
@@ -25,15 +41,8 @@ class GithubModule {
 
     @Provides
     @GithubScope
-    fun provideRetrofit(okHttpClient: OkHttpClient, gsonConverterFactory: GsonConverterFactory) =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .addConverterFactory(gsonConverterFactory)
+    fun provideRetrofit(retrofitBuilder: Retrofit.Builder) =
+        retrofitBuilder
             .baseUrl(URL_GITHUB_API)
             .build()
-
-    @Provides
-    @GithubScope
-    fun provideGsonConverterFactory(): GsonConverterFactory =
-        GsonConverterFactory.create()
 }

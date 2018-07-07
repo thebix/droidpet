@@ -1,20 +1,20 @@
-package net.thebix.droidpet.github.api.di
+package net.thebix.droidpet.di
 
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class ContextModule(private val context: Context) {
 
     @Provides
-    @GithubScope
+    @Singleton
     @ApplicationContext
     fun provideApplicationContext(): Context =
         context.applicationContext
 
     @Provides
-    @GithubScope
     fun provideActivityContext(): Context =
         context
 
