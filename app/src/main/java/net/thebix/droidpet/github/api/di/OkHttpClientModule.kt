@@ -3,9 +3,10 @@ package net.thebix.droidpet.github.api.di
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import net.thebix.droidpet.github.network.LoggingInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import timber.log.Timber
 import java.io.File
 
 @Module(
@@ -21,17 +22,20 @@ class OkHttpClientModule {
 
     @Provides
     @GithubScope
-    fun provideOkHttpClient(loggingInterceptor: LoggingInterceptor, cache: Cache): OkHttpClient =
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor, cache: Cache): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+            .addNetworkInterceptor(loggingInterceptor)
             .cache(cache)
             .build()
 
-    // TODO: change to @Binds
     @Provides
     @GithubScope
-    fun provideLoggingInterceptor(): LoggingInterceptor =
-        LoggingInterceptor()
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor { Timber.d(it) }
+            .apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+
 
     @Provides
     @GithubScope
