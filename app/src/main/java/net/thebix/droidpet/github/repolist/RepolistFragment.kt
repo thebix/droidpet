@@ -2,13 +2,16 @@ package net.thebix.droidpet.github.repolist
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import net.thebix.droidpet.DroidpetApp
 import net.thebix.droidpet.R
 import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.github.api.di.DaggerGithubComponent
+import net.thebix.droidpet.github.api.di.GithubComponent
 import net.thebix.droidpet.github.api.models.Repo
 import net.thebix.droidpet.github.repolist.di.DaggerRepolistComponent
 import net.thebix.droidpet.network.di.DaggerNetworkComponent
@@ -33,10 +36,12 @@ class RepolistFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         // TODO: move to application class
-        val networkComponent = DaggerNetworkComponent.create()
-        val githubComponent = DaggerGithubComponent.builder()
-            .networkComponent(networkComponent)
-            .build()
+//        val networkComponent = DaggerNetworkComponent.create()
+//        val githubComponent = DaggerGithubComponent.builder()
+//            .networkComponent(networkComponent)
+//            .build()
+        val githubComponent = DroidpetApp.get(activity as FragmentActivity)
+            .getDaggerComponent(GithubComponent::class.simpleName!!) as GithubComponent
         val repolistComponent = DaggerRepolistComponent.builder()
             .githubComponent(githubComponent)
             .build()

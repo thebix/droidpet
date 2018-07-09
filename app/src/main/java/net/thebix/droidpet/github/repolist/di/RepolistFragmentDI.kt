@@ -2,6 +2,7 @@ package net.thebix.droidpet.github.repolist.di
 
 import dagger.Component
 import dagger.Module
+import net.thebix.droidpet.di.DroidpetComponent
 import net.thebix.droidpet.github.api.di.GithubComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import javax.inject.Scope
@@ -19,7 +20,7 @@ annotation class RepolistScope
         RepolistModule::class
     ]
 )
-interface RepolistComponent {
+interface RepolistComponent : DroidpetComponent {
 
     fun inject(repolistFragment: RepolistFragment)
 

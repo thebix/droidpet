@@ -3,6 +3,7 @@ package net.thebix.droidpet.github.api.di
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import net.thebix.droidpet.di.DroidpetComponent
 import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.network.di.NetworkComponent
 import retrofit2.Retrofit
@@ -21,7 +22,7 @@ annotation class GithubScope
         GithubModule::class
     ]
 )
-interface GithubComponent {
+interface GithubComponent : DroidpetComponent {
 
     fun getGithubService(): GithubService
 }

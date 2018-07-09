@@ -5,11 +5,12 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+@Deprecated("this module is definitely shouldn't be used")
 @Module
 class ContextModule(private val context: Context) {
 
     @Provides
-    @Singleton
+    @ApplicationScope
     @ApplicationContext
     fun provideApplicationContext(): Context =
         context.applicationContext
