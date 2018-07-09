@@ -2,6 +2,7 @@
  * refactored Lifecycle-aware KotterKnife. Still doesn't work properly on back press
  * source: https://www.reddit.com/r/androiddev/comments/7er154/lifecycleaware_kotterknife/
  */
+@file:Suppress("unused", "UNUSED_ANONYMOUS_PARAMETER", "SimplifiableCallChain")
 
 package net.thebix.droidpet.common
 
