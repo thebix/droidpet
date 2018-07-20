@@ -11,37 +11,38 @@ import javax.inject.Scope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class GithubScope
+annotation class GithubApiScope
 
-@GithubScope
+@GithubApiScope
 @Component(
     dependencies = [
         NetworkComponent::class
     ],
     modules = [
-        GithubModule::class
+        GithubApiModule::class
     ]
 )
-interface GithubComponent : DroidpetComponent {
+// TODO: probably this module doesn't need to be related to DroidpetComponent
+interface GithubApiComponent : DroidpetComponent {
 
     fun getGithubService(): GithubService
 }
 
 
 @Module
-class GithubModule {
+class GithubApiModule {
 
     companion object {
         private const val URL_GITHUB_API = "https://api.github.com/"
     }
 
     @Provides
-    @GithubScope
+    @GithubApiScope
     fun provideGithubService(retrofit: Retrofit) =
         retrofit.create(GithubService::class.java)
 
     @Provides
-    @GithubScope
+    @GithubApiScope
     fun provideRetrofit(retrofitBuilder: Retrofit.Builder) =
         retrofitBuilder
             .baseUrl(URL_GITHUB_API)

@@ -3,7 +3,7 @@ package net.thebix.droidpet.github.repolist.di
 import dagger.Component
 import dagger.Module
 import net.thebix.droidpet.di.DroidpetComponent
-import net.thebix.droidpet.github.api.di.GithubComponent
+import net.thebix.droidpet.github.api.di.GithubApiComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import javax.inject.Scope
 
@@ -14,7 +14,7 @@ annotation class RepolistScope
 @RepolistScope
 @Component(
     dependencies = [
-        GithubComponent::class
+        GithubApiComponent::class
     ],
     modules = [
         RepolistModule::class

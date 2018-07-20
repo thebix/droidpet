@@ -10,11 +10,9 @@ import android.widget.TextView
 import net.thebix.droidpet.DroidpetApp
 import net.thebix.droidpet.R
 import net.thebix.droidpet.github.api.GithubService
-import net.thebix.droidpet.github.api.di.DaggerGithubComponent
-import net.thebix.droidpet.github.api.di.GithubComponent
+import net.thebix.droidpet.github.api.di.GithubApiComponent
 import net.thebix.droidpet.github.api.models.Repo
 import net.thebix.droidpet.github.repolist.di.DaggerRepolistComponent
-import net.thebix.droidpet.network.di.DaggerNetworkComponent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,9 +39,9 @@ class RepolistFragment : Fragment() {
 //            .networkComponent(networkComponent)
 //            .build()
         val githubComponent = DroidpetApp.get(activity as FragmentActivity)
-            .getDaggerComponent(GithubComponent::class.simpleName!!) as GithubComponent
+            .getDaggerComponent(GithubApiComponent::class.simpleName!!) as GithubApiComponent
         val repolistComponent = DaggerRepolistComponent.builder()
-            .githubComponent(githubComponent)
+            .githubApiComponent(githubComponent)
             .build()
         repolistComponent.inject(this)
     }
@@ -63,6 +61,9 @@ class RepolistFragment : Fragment() {
                 override fun onResponse(call: Call<List<Repo>>, response: Response<List<Repo>>) {
                     val repos = response.body() ?: emptyList()
                     Timber.d("Received the list of repos, count: <${response.body()?.size}>")
+                    if (repos.isEmpty()) {
+                        return
+                    }
                     repolistItems.text = repos.joinToString("\n") { it.name }
                 }
             })

@@ -5,8 +5,8 @@ import android.app.Application
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetComponent
-import net.thebix.droidpet.github.api.di.DaggerGithubComponent
-import net.thebix.droidpet.github.api.di.GithubComponent
+import net.thebix.droidpet.github.api.di.DaggerGithubApiComponent
+import net.thebix.droidpet.github.api.di.GithubApiComponent
 import net.thebix.droidpet.network.di.DaggerNetworkComponent
 import net.thebix.droidpet.network.di.NetworkComponent
 import timber.log.Timber
@@ -43,7 +43,7 @@ class DroidpetApp : Application() {
     fun getDaggerComponent(componentName: String): DroidpetComponent {
         if (!daggerComponents.containsKey(componentName)) {
             daggerComponents[componentName] = when (componentName) {
-                GithubComponent::class.simpleName -> DaggerGithubComponent
+                GithubApiComponent::class.simpleName -> DaggerGithubApiComponent
                     .builder()
                     .networkComponent(networkComponent)
                     .build()
