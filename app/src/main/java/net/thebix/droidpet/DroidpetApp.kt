@@ -2,6 +2,7 @@ package net.thebix.droidpet
 
 import android.app.Activity
 import android.app.Application
+import com.squareup.leakcanary.LeakCanary
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetComponent
@@ -20,6 +21,12 @@ class DroidpetApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return
+        }
+        LeakCanary.install(this)
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
