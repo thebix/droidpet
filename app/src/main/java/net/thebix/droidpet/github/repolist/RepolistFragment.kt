@@ -1,6 +1,5 @@
 package net.thebix.droidpet.github.repolist
 
-//import net.thebix.droidpet.github.repolist.di.DaggerRepolistComponent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater

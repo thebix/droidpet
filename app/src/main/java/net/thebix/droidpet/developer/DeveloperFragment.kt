@@ -33,9 +33,6 @@ class DeveloperFragment : Fragment() {
         navigationManager = NavigationManager(context!!.applicationContext)
         disposables = CompositeDisposable(
             RxView.clicks(buttonRepoList)
-//                .subscribe {
-//                    fragmentManager?.let { navigationManager.goToRepolist(it) }
-//                }
                 .subscribe {
                     navigationManager?.goToGithub()
                 }
