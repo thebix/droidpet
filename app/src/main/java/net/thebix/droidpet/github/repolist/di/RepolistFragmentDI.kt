@@ -1,9 +1,9 @@
 package net.thebix.droidpet.github.repolist.di
 
-import dagger.Component
 import dagger.Module
-import net.thebix.droidpet.di.DroidpetComponent
-import net.thebix.droidpet.github.api.di.GithubApiComponent
+import dagger.Subcomponent
+import net.thebix.droidpet.common.DroidpetComponent
+import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import javax.inject.Scope
 
@@ -12,23 +12,21 @@ import javax.inject.Scope
 annotation class RepolistScope
 
 @RepolistScope
-@Component(
-    dependencies = [
-        GithubApiComponent::class
-    ],
+@Subcomponent(
     modules = [
         RepolistModule::class
     ]
 )
 interface RepolistComponent : DroidpetComponent {
 
+    @Subcomponent.Builder
+    interface Builder : DroidpetComponentBuilder<RepolistComponent> {
+        override fun build(): RepolistComponent
+    }
+
     fun inject(repolistFragment: RepolistFragment)
 
 }
 
 @Module
-class RepolistModule {
-
-    // TODO: add fragment related providers/binds
-
-}
+interface RepolistModule

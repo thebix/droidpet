@@ -5,9 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import net.thebix.droidpet.R
+import net.thebix.droidpet.common.DroidpetComponent
+import net.thebix.droidpet.common.DroidpetComponentBuilder
+import net.thebix.droidpet.common.HasDroidpetSubcomponentBuilders
+import net.thebix.droidpet.github.api.di.DaggerGithubApiComponent
+import net.thebix.droidpet.github.di.DaggerGithubComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
+import net.thebix.droidpet.network.di.DaggerNetworkComponent
+import javax.inject.Inject
+import javax.inject.Provider
 
-class GithubActivity : AppCompatActivity() {
+class GithubActivity : AppCompatActivity(),
+                       HasDroidpetSubcomponentBuilders {
 
     companion object {
 
@@ -21,8 +30,20 @@ class GithubActivity : AppCompatActivity() {
         }
     }
 
+    @Inject
+    lateinit var droidpetComponentBuilders: Map<Class<out DroidpetComponent>, @JvmSuppressWildcards Provider<DroidpetComponentBuilder<*>>>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val githubApiComponent = DaggerGithubApiComponent.builder()
+            .networkComponent(DaggerNetworkComponent.create())
+            .build()
+        val githubComponent = DaggerGithubComponent.builder()
+            .githubApiComponent(githubApiComponent)
+            .build()
+        githubComponent.inject(this)
+
         setContentView(R.layout.activity_github)
         supportFragmentManager
             .beginTransaction()
@@ -30,6 +51,10 @@ class GithubActivity : AppCompatActivity() {
                 replace(R.id.activity_github_root, RepolistFragment.newInstance(), RepolistFragment::class.simpleName)
                 commit()
             }
+    }
+
+    override fun getDroidpetComponentBuilder(droidpetComponentClass: Class<out DroidpetComponent>): DroidpetComponentBuilder<*> {
+        return droidpetComponentBuilders[droidpetComponentClass]!!.get()
     }
 
 }

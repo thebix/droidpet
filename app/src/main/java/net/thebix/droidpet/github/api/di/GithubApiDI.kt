@@ -3,7 +3,7 @@ package net.thebix.droidpet.github.api.di
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import net.thebix.droidpet.di.DroidpetComponent
+import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.network.di.NetworkComponent
 import retrofit2.Retrofit
