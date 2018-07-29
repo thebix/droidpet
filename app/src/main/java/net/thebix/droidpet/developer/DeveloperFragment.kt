@@ -17,7 +17,7 @@ class DeveloperFragment : Fragment() {
     private val buttonRepoList get() = view!!.findViewById(R.id.fragment_developer_repo_list_button) as Button
 
     // TODO: DeveloperFragmentNavigator (as NavigationManager) should be injected
-    private val navigationManager: DeveloperFragmentNavigator = NavigationManager()
+    private var navigationManager: DeveloperFragmentNavigator? = null
     private lateinit var disposables: CompositeDisposable
 
     companion object {
@@ -30,15 +30,20 @@ class DeveloperFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        navigationManager = NavigationManager(context!!.applicationContext)
         disposables = CompositeDisposable(
             RxView.clicks(buttonRepoList)
+//                .subscribe {
+//                    fragmentManager?.let { navigationManager.goToRepolist(it) }
+//                }
                 .subscribe {
-                    fragmentManager?.let { navigationManager.goToRepolist(it) }
+                    navigationManager?.goToGithub()
                 }
         )
     }
 
     override fun onStop() {
+        navigationManager = null
         disposables.clear()
         super.onStop()
     }

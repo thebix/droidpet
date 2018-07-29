@@ -1,19 +1,24 @@
 package net.thebix.droidpet.navigation
 
-import android.support.v4.app.FragmentManager
-import net.thebix.droidpet.R
+import android.content.Context
 import net.thebix.droidpet.developer.navigation.DeveloperFragmentNavigator
-import net.thebix.droidpet.github.repolist.RepolistFragment
+import net.thebix.droidpet.di.ApplicationContext
+import net.thebix.droidpet.github.GithubActivity
+import javax.inject.Inject
 
-class NavigationManager
-    : DeveloperFragmentNavigator {
+class NavigationManager @Inject constructor(
+        @ApplicationContext private val appContext: Context
+) : DeveloperFragmentNavigator {
     // TODO: fragmentManager should be injected
-    override fun goToRepolist(fragmentManager: FragmentManager) {
-        fragmentManager.beginTransaction()
-            .apply {
-                replace(R.id.activity_droidpet_root, RepolistFragment.newInstance(), RepolistFragment::class.simpleName)
-                addToBackStack(null)
-                commit()
-            }
+//    override fun goToRepolist(fragmentManager: FragmentManager) {
+//        fragmentManager.beginTransaction()
+//            .apply {
+//                replace(R.id.activity_droidpet_root, RepolistFragment.newInstance(), RepolistFragment::class.simpleName)
+//                addToBackStack(null)
+//                commit()
+//            }
+//    }
+    override fun goToGithub() {
+        GithubActivity.launch(appContext)
     }
 }
