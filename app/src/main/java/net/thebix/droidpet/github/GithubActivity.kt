@@ -8,7 +8,6 @@ import net.thebix.droidpet.R
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.common.HasDroidpetSubcomponentBuilders
-import net.thebix.droidpet.github.api.di.DaggerGithubApiComponent
 import net.thebix.droidpet.github.di.DaggerGithubComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import net.thebix.droidpet.network.di.DaggerNetworkComponent
@@ -36,11 +35,8 @@ class GithubActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val githubApiComponent = DaggerGithubApiComponent.builder()
-            .networkComponent(DaggerNetworkComponent.create())
-            .build()
         val githubComponent = DaggerGithubComponent.builder()
-            .githubApiComponent(githubApiComponent)
+            .networkComponent(DaggerNetworkComponent.create())
             .build()
         githubComponent.inject(this)
 

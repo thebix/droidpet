@@ -3,13 +3,16 @@ package net.thebix.droidpet.github.di
 import dagger.Binds
 import dagger.Component
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.common.DroidpetComponentKey
 import net.thebix.droidpet.github.GithubActivity
-import net.thebix.droidpet.github.api.di.GithubApiComponent
+import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.github.repolist.di.RepolistComponent
+import net.thebix.droidpet.network.di.NetworkComponent
+import retrofit2.Retrofit
 import javax.inject.Scope
 
 @Scope
@@ -19,19 +22,19 @@ annotation class GithubScope
 @GithubScope
 @Component(
     dependencies = [
-        // TODO: remove component, use module
-        GithubApiComponent::class
+        NetworkComponent::class
     ],
     modules = [
         GithubModule::class,
-        GithubBindingModule::class
+        GithubBindingModule::class,
+        GithubApiModule::class
     ]
 )
 interface GithubComponent : DroidpetComponent {
 
     @Component.Builder
     interface Builder : DroidpetComponentBuilder<GithubComponent> {
-        fun githubApiComponent(githubApiComponent: GithubApiComponent): DroidpetComponentBuilder<GithubComponent>
+        fun networkComponent(networkComponent: NetworkComponent): Builder
         override fun build(): GithubComponent
     }
 
@@ -54,4 +57,21 @@ abstract class GithubBindingModule {
     @IntoMap
     @DroidpetComponentKey(RepolistComponent::class)
     abstract fun bindRepolistComponent(repolistComponentBuilder: RepolistComponent.Builder): DroidpetComponentBuilder<*>
+}
+
+@Module
+class GithubApiModule {
+
+    companion object {
+        private const val URL_GITHUB_API = "https://api.github.com/"
+    }
+
+    @Provides
+    @GithubScope
+    fun provideGithubService(retrofitBuilder: Retrofit.Builder): GithubService =
+        retrofitBuilder
+            .baseUrl(URL_GITHUB_API)
+            .build()
+            .create(GithubService::class.java)
+
 }
