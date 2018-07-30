@@ -2,7 +2,9 @@ package net.thebix.droidpet
 
 import android.app.Application
 import com.squareup.leakcanary.LeakCanary
+import net.thebix.droidpet.di.ContextModule
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
+import net.thebix.droidpet.di.DroidpetAppComponent
 import timber.log.Timber
 
 @Suppress("unused")
@@ -24,8 +26,13 @@ class DroidpetApp : Application() {
 
     // region Dagger
 
+    val droidpetAppComponent by lazy<DroidpetAppComponent> {
+        DaggerDroidpetAppComponent.builder()
+            .contextModule(ContextModule(applicationContext))
+            .build()
+    }
+
     private fun initDagger() {
-        val droidpetAppComponent = DaggerDroidpetAppComponent.create()
         droidpetAppComponent.inject(this)
     }
 
