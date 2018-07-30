@@ -17,25 +17,25 @@ import javax.inject.Scope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class GithubScope
+annotation class GithubActivityScope
 
-@GithubScope
+@GithubActivityScope
 @Component(
     dependencies = [
         NetworkComponent::class
     ],
     modules = [
-        GithubModule::class,
+        GithubActivityModule::class,
         GithubBindingModule::class,
         GithubApiModule::class
     ]
 )
-interface GithubComponent : DroidpetComponent {
+interface GithubActivityComponent : DroidpetComponent {
 
     @Component.Builder
-    interface Builder : DroidpetComponentBuilder<GithubComponent> {
+    interface Builder : DroidpetComponentBuilder<GithubActivityComponent> {
         fun networkComponent(networkComponent: NetworkComponent): Builder
-        override fun build(): GithubComponent
+        override fun build(): GithubActivityComponent
     }
 
     fun inject(githubActivity: GithubActivity)
@@ -43,7 +43,7 @@ interface GithubComponent : DroidpetComponent {
 }
 
 @Module
-interface GithubModule
+interface GithubActivityModule
 
 @Module(
     subcomponents = [
@@ -67,7 +67,7 @@ class GithubApiModule {
     }
 
     @Provides
-    @GithubScope
+    @GithubActivityScope
     fun provideGithubService(retrofitBuilder: Retrofit.Builder): GithubService =
         retrofitBuilder
             .baseUrl(URL_GITHUB_API)

@@ -8,7 +8,7 @@ import net.thebix.droidpet.R
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.common.HasDroidpetSubcomponentBuilders
-import net.thebix.droidpet.github.di.DaggerGithubComponent
+import net.thebix.droidpet.github.di.DaggerGithubActivityComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import net.thebix.droidpet.network.di.DaggerNetworkComponent
 import javax.inject.Inject
@@ -35,10 +35,10 @@ class GithubActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val githubComponent = DaggerGithubComponent.builder()
+        val githubActivityComponent = DaggerGithubActivityComponent.builder()
             .networkComponent(DaggerNetworkComponent.create())
             .build()
-        githubComponent.inject(this)
+        githubActivityComponent.inject(this)
 
         setContentView(R.layout.activity_github)
         supportFragmentManager
