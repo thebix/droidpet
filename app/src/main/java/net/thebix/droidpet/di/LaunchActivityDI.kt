@@ -4,7 +4,7 @@ import dagger.Binds
 import dagger.Component
 import dagger.Module
 import dagger.multibindings.IntoMap
-import net.thebix.droidpet.DroidpetActivity
+import net.thebix.droidpet.LaunchActivity
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.common.DroidpetComponentKey
@@ -13,32 +13,32 @@ import javax.inject.Scope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class DroidpetActivityScope
+annotation class LaunchActivityScope
 
-@DroidpetActivityScope
+@LaunchActivityScope
 @Component(
     dependencies = [
         DroidpetAppComponent::class
     ],
     modules = [
-        DroidpetActivityModule::class,
+        LaunchActivityModule::class,
         DroidpetActivityBindingModule::class
     ]
 )
-interface DroidpetActivityComponent : DroidpetComponent {
+interface LaunchActivityComponent : DroidpetComponent {
 
     @Component.Builder
-    interface Builder : DroidpetComponentBuilder<DroidpetActivityComponent> {
+    interface Builder : DroidpetComponentBuilder<LaunchActivityComponent> {
         fun appComponent(droidpetAppComponent: DroidpetAppComponent): Builder
-        override fun build(): DroidpetActivityComponent
+        override fun build(): LaunchActivityComponent
     }
 
-    fun inject(droidpetActivity: DroidpetActivity)
+    fun inject(launchActivity: LaunchActivity)
 
 }
 
 @Module
-interface DroidpetActivityModule
+interface LaunchActivityModule
 
 @Module(
     subcomponents = [
@@ -51,5 +51,5 @@ abstract class DroidpetActivityBindingModule {
     @Binds
     @IntoMap
     @DroidpetComponentKey(DeveloperComponent::class)
-    abstract fun bindDroidpetActivityComponent(droidpetActivityComponentBuilder: DeveloperComponent.Builder): DroidpetComponentBuilder<*>
+    abstract fun bindDeveloperComponent(developerComponentBuilder: DeveloperComponent.Builder): DroidpetComponentBuilder<*>
 }

@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".DroidpetActivity"
+            android:name=".LaunchActivity"
             android:label="@string/activity_droidpet_label"
             android:screenOrientation="portrait">
             <intent-filter>
