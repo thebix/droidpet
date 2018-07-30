@@ -1,9 +1,11 @@
-package net.thebix.droidpet
+package net.thebix.droidpet.launch
 
 import android.os.Bundle
+import net.thebix.droidpet.DroidpetApp
+import net.thebix.droidpet.R
 import net.thebix.droidpet.common.DroidpetActivity
-import net.thebix.droidpet.developer.DeveloperFragment
-import net.thebix.droidpet.di.DaggerLaunchActivityComponent
+import net.thebix.droidpet.launch.developer.DeveloperFragment
+import net.thebix.droidpet.launch.di.DaggerLaunchActivityComponent
 import timber.log.Timber
 
 class LaunchActivity : DroidpetActivity() {

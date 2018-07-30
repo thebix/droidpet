@@ -1,4 +1,4 @@
-package net.thebix.droidpet.developer.navigation
+package net.thebix.droidpet.launch.developer.navigation
 
 interface DeveloperFragmentNavigator {
     fun goToGithub()

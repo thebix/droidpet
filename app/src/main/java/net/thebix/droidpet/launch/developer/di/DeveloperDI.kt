@@ -1,12 +1,12 @@
-package net.thebix.droidpet.developer.di
+package net.thebix.droidpet.launch.developer.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
-import net.thebix.droidpet.developer.DeveloperFragment
-import net.thebix.droidpet.developer.navigation.DeveloperFragmentNavigator
+import net.thebix.droidpet.launch.developer.DeveloperFragment
+import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
 import net.thebix.droidpet.navigation.NavigationManager
 import javax.inject.Scope
 

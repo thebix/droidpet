@@ -1,7 +1,7 @@
 package net.thebix.droidpet.navigation
 
 import android.content.Context
-import net.thebix.droidpet.developer.navigation.DeveloperFragmentNavigator
+import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
 import net.thebix.droidpet.di.ApplicationContext
 import net.thebix.droidpet.github.GithubActivity
 import javax.inject.Inject
