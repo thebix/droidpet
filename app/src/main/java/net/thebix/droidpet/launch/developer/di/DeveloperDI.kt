@@ -1,13 +1,13 @@
 package net.thebix.droidpet.launch.developer.di
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.Subcomponent
 import net.thebix.droidpet.common.DroidpetComponent
 import net.thebix.droidpet.common.DroidpetComponentBuilder
 import net.thebix.droidpet.launch.developer.DeveloperFragment
 import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
-import net.thebix.droidpet.navigation.NavigationManager
+import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigatorImpl
 import javax.inject.Scope
 
 @Scope
@@ -32,10 +32,11 @@ interface DeveloperComponent : DroidpetComponent {
 }
 
 @Module
-class DeveloperModule {
+abstract class DeveloperModule {
 
-    @Provides
+    @Suppress("unused")
+    @Binds
     @DeveloperScope
-    fun provideDeveloperFragmentNavigator(navigationManager: NavigationManager): DeveloperFragmentNavigator = navigationManager
+    abstract fun bindDeveloperFragmentNavigator(developerFragmentNavigator: DeveloperFragmentNavigatorImpl): DeveloperFragmentNavigator
 
 }

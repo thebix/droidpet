@@ -16,11 +16,6 @@ class GithubActivity : DroidpetActivity() {
         @Suppress("MemberVisibilityCanBePrivate")
         @JvmStatic
         fun createIntent(context: Context) = Intent(context, GithubActivity::class.java)
-
-        @JvmStatic
-        fun launch(context: Context) {
-            context.startActivity(createIntent(context))
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

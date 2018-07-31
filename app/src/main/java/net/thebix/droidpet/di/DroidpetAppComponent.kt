@@ -1,10 +1,13 @@
 package net.thebix.droidpet.di
 
 import android.content.Context
+import dagger.Binds
 import dagger.Component
 import dagger.Module
 import net.thebix.droidpet.DroidpetApp
 import net.thebix.droidpet.common.DroidpetComponent
+import net.thebix.droidpet.navigation.NavigatorHolder
+import net.thebix.droidpet.navigation.NavigatorHolderImpl
 import javax.inject.Scope
 
 @Scope
@@ -26,7 +29,16 @@ interface DroidpetAppComponent : DroidpetComponent {
     @ApplicationContext
     fun getAppContext(): Context
 
+    fun getNavigatorHolder(): NavigatorHolder
+
 }
 
 @Module
-interface DroidpetAppModule
+abstract class DroidpetAppModule {
+
+    @Suppress("unused")
+    @Binds
+    @ApplicationScope
+    abstract fun bindNavigatorHolder(navigatorImpl: NavigatorHolderImpl): NavigatorHolder
+
+}
