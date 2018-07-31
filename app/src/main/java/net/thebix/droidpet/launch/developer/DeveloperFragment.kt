@@ -9,7 +9,7 @@ import android.widget.Button
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.disposables.CompositeDisposable
 import net.thebix.droidpet.R
-import net.thebix.droidpet.common.HasDroidpetSubcomponentBuilders
+import net.thebix.droidpet.common.DroidpetActivity
 import net.thebix.droidpet.launch.developer.di.DeveloperComponent
 import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
 import javax.inject.Inject
@@ -29,7 +29,7 @@ class DeveloperFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ((activity as HasDroidpetSubcomponentBuilders).getDroidpetComponentBuilder(DeveloperComponent::class.java)
+        ((activity as DroidpetActivity).getDroidpetComponentBuilder(DeveloperComponent::class.java)
                 as DeveloperComponent.Builder)
             .build()
             .inject(this)
