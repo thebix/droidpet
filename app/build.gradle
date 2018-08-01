@@ -46,6 +46,8 @@ dependencies {
 
     debugImplementation project(path: ':common')
     releaseImplementation project(path: ':common')
+    debugImplementation project(path: ':common_android')
+    releaseImplementation project(path: ':common_android')
     debugImplementation project(path: ':network')
     releaseImplementation project(path: ':network')
 }

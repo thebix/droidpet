@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import net.thebix.droidpet.R
-import net.thebix.droidpet.common.DroidpetActivity
+import net.thebix.common_android.DroidpetActivity
 import net.thebix.droidpet.github.di.DaggerGithubActivityComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import net.thebix.network.di.DaggerNetworkComponent
