@@ -44,6 +44,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    debugImplementation project(path: ':common')
+    releaseImplementation project(path: ':common')
     debugImplementation project(path: ':network')
     releaseImplementation project(path: ':network')
 }

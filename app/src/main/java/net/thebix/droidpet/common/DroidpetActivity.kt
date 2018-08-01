@@ -1,6 +1,9 @@
 package net.thebix.droidpet.common
 
 import android.support.v7.app.AppCompatActivity
+import net.thebix.common.DroidpetComponent
+import net.thebix.common.DroidpetComponentBuilder
+import net.thebix.common.HasDroidpetSubcomponentBuilders
 import javax.inject.Inject
 import javax.inject.Provider
 

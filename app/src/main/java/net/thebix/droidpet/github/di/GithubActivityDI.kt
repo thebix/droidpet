@@ -5,9 +5,9 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
-import net.thebix.droidpet.common.DroidpetComponent
-import net.thebix.droidpet.common.DroidpetComponentBuilder
-import net.thebix.droidpet.common.DroidpetComponentKey
+import net.thebix.common.DroidpetComponent
+import net.thebix.common.DroidpetComponentBuilder
+import net.thebix.common.DroidpetComponentKey
 import net.thebix.droidpet.github.GithubActivity
 import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.github.repolist.di.RepolistComponent

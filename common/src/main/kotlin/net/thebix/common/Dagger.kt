@@ -1,7 +1,7 @@
 // INFO: https://frogermcs.github.io/activities-multibinding-in-dagger-2/
 // INFO: https://github.com/frogermcs/Dagger2Recipes-ActivitiesMultibinding/blob/master/app/src/main/java/com/frogermcs/recipes/dagger_activities_multibinding/di/activity/ActivityKey.java
 
-package net.thebix.droidpet.common
+package net.thebix.common
 
 import dagger.MapKey
 import kotlin.reflect.KClass

@@ -3,8 +3,8 @@ package net.thebix.droidpet.launch.developer.di
 import dagger.Binds
 import dagger.Module
 import dagger.Subcomponent
-import net.thebix.droidpet.common.DroidpetComponent
-import net.thebix.droidpet.common.DroidpetComponentBuilder
+import net.thebix.common.DroidpetComponent
+import net.thebix.common.DroidpetComponentBuilder
 import net.thebix.droidpet.launch.developer.DeveloperFragment
 import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
 import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigatorImpl

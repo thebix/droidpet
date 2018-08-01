@@ -4,11 +4,11 @@ import dagger.Binds
 import dagger.Component
 import dagger.Module
 import dagger.multibindings.IntoMap
-import net.thebix.droidpet.launch.LaunchActivity
-import net.thebix.droidpet.common.DroidpetComponent
-import net.thebix.droidpet.common.DroidpetComponentBuilder
-import net.thebix.droidpet.common.DroidpetComponentKey
+import net.thebix.common.DroidpetComponent
+import net.thebix.common.DroidpetComponentBuilder
+import net.thebix.common.DroidpetComponentKey
 import net.thebix.droidpet.di.DroidpetAppComponent
+import net.thebix.droidpet.launch.LaunchActivity
 import net.thebix.droidpet.launch.developer.di.DeveloperComponent
 import javax.inject.Scope
 
