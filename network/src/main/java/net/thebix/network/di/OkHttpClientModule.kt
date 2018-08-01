@@ -1,10 +1,13 @@
-package net.thebix.droidpet.network.di
+package net.thebix.network.di
 
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import timber.log.Timber
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+// TODO: add timber as project / to common library / something else and remove slf4j
 
 @Module
 class OkHttpClientModule {
@@ -23,12 +26,17 @@ class OkHttpClientModule {
 
     @Provides
     @NetworkScope
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
-        HttpLoggingInterceptor { Timber.d(it) }
+    fun provideLoggingInterceptor(logger: Logger): HttpLoggingInterceptor =
+        HttpLoggingInterceptor {
+            logger.debug(it)
+        }
             .apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }
 
+    @Provides
+    @NetworkScope
+    fun provideLogger(): Logger = LoggerFactory.getLogger(OkHttpClientModule::class.java)
 
     // TODO: provide cacheDir and remove context dependency
 //    @Provides

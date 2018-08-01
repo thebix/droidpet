@@ -1,4 +1,4 @@
-package net.thebix.droidpet.network.di
+package net.thebix.network.di
 
 import dagger.Module
 import dagger.Provides

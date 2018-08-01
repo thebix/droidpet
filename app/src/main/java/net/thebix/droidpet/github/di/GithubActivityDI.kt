@@ -11,7 +11,7 @@ import net.thebix.droidpet.common.DroidpetComponentKey
 import net.thebix.droidpet.github.GithubActivity
 import net.thebix.droidpet.github.api.GithubService
 import net.thebix.droidpet.github.repolist.di.RepolistComponent
-import net.thebix.droidpet.network.di.NetworkComponent
+import net.thebix.network.di.NetworkComponent
 import retrofit2.Retrofit
 import javax.inject.Scope
 

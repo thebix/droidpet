@@ -7,7 +7,7 @@ import net.thebix.droidpet.R
 import net.thebix.droidpet.common.DroidpetActivity
 import net.thebix.droidpet.github.di.DaggerGithubActivityComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
-import net.thebix.droidpet.network.di.DaggerNetworkComponent
+import net.thebix.network.di.DaggerNetworkComponent
 
 class GithubActivity : DroidpetActivity() {
 
