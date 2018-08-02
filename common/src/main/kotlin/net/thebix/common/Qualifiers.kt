@@ -1,4 +1,4 @@
-package net.thebix.droidpet.di
+package net.thebix.common
 
 import javax.inject.Qualifier
 

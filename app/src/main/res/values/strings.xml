@@ -1,13 +1,9 @@
 <resources>
     <string name="app_name">Droidpet</string>
-    <string name="activity_droidpet_label">Droidpet Activity label</string>
 
-    <!-- Activity Droidpet -->
-    <string name="activity_droidpet_title">Activity Droidpet title</string>
-
-    <!-- Developer Fragment-->
-    <string name="fragment_developer_title">Fragment Developer title</string>
-    <string name="fragment_developer_repolist_button_title">Github repo list</string>
+    <!-- Activity Splash -->
+    <string name="activity_splash_title">Activity Splash title</string>
+    <string name="activity_splash_label">Droidpet Splash label</string>
 
     <!-- Github Repolist -->
     <string name="github_repolist_title">Github Repolist title</string>

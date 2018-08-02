@@ -1,4 +1,4 @@
-package net.thebix.droidpet.launch.di
+package net.thebix.launch.di
 
 import dagger.Binds
 import dagger.Component
@@ -7,9 +7,9 @@ import dagger.multibindings.IntoMap
 import net.thebix.common.DroidpetComponent
 import net.thebix.common.DroidpetComponentBuilder
 import net.thebix.common.DroidpetComponentKey
-import net.thebix.droidpet.di.DroidpetAppComponent
-import net.thebix.droidpet.launch.LaunchActivity
-import net.thebix.droidpet.launch.developer.di.DeveloperComponent
+import net.thebix.common_android.CommonComponent
+import net.thebix.launch.LaunchActivity
+import net.thebix.launch.developer.di.DeveloperComponent
 import javax.inject.Scope
 
 @Scope
@@ -19,7 +19,7 @@ annotation class LaunchActivityScope
 @LaunchActivityScope
 @Component(
     dependencies = [
-        DroidpetAppComponent::class
+        CommonComponent::class
     ],
     modules = [
         LaunchActivityModule::class,
@@ -30,7 +30,7 @@ interface LaunchActivityComponent : DroidpetComponent {
 
     @Component.Builder
     interface Builder : DroidpetComponentBuilder<LaunchActivityComponent> {
-        fun appComponent(droidpetAppComponent: DroidpetAppComponent): Builder
+        fun commonComponent(commonComponent: CommonComponent): Builder
         override fun build(): LaunchActivityComponent
     }
 

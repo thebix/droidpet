@@ -1,11 +1,10 @@
-package net.thebix.droidpet.launch.developer.navigation
+package net.thebix.launch.developer.navigation
 
 import android.content.Context
-import net.thebix.droidpet.di.ApplicationContext
-import net.thebix.droidpet.github.GithubActivity
-import net.thebix.droidpet.launch.developer.DeveloperFragment
-import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator.Companion.scope
-import net.thebix.droidpet.navigation.NavigatorHolder
+import net.thebix.common.ApplicationContext
+import net.thebix.common_android.NavigatorHolder
+import net.thebix.launch.developer.DeveloperFragment
+import net.thebix.launch.developer.navigation.DeveloperFragmentNavigator.Companion.scope
 import javax.inject.Inject
 
 interface DeveloperFragmentNavigator {
@@ -25,6 +24,6 @@ class DeveloperFragmentNavigatorImpl @Inject constructor(
     private val navigator get () = navigatorHolder.getNavigator(scope)
 
     override fun goToGithub() {
-        navigator.openActivity(GithubActivity.createIntent(appContext))
+//        navigator.openActivity(GithubActivity.createIntent(appContext))
     }
 }

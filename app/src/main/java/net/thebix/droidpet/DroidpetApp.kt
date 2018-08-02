@@ -1,14 +1,16 @@
 package net.thebix.droidpet
 
-import android.app.Application
 import com.squareup.leakcanary.LeakCanary
-import net.thebix.droidpet.di.ContextModule
+import net.thebix.common_android.CommonComponent
+import net.thebix.common_android.CommonModule
+import net.thebix.common_android.DaggerCommonComponent
+import net.thebix.common_android.DroidpetAppBase
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
 import timber.log.Timber
 
 @Suppress("unused")
-class DroidpetApp : Application() {
+class DroidpetApp : DroidpetAppBase() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,10 +28,18 @@ class DroidpetApp : Application() {
 
     // region Dagger
 
-    val droidpetAppComponent by lazy<DroidpetAppComponent> {
-        DaggerDroidpetAppComponent.builder()
-            .contextModule(ContextModule(applicationContext))
-            .build()
+    private val droidpetAppComponent by lazy<DroidpetAppComponent> {
+        DaggerDroidpetAppComponent.create()
+    }
+    private var commonComponent: CommonComponent? = null
+
+    override fun getCommonComponent(): CommonComponent {
+        if (commonComponent == null) {
+            commonComponent = DaggerCommonComponent.builder()
+                .commonModule(CommonModule(applicationContext))
+                .build()
+        }
+        return commonComponent!!
     }
 
     private fun initDagger() {

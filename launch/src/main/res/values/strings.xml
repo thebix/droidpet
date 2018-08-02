@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">launch</string>
+    <string name="app_name">Launch module</string>
+
+    <!-- Activity Droidpet -->
+    <string name="activity_droidpet_title">Activity Droidpet title</string>
+
+    <!-- Developer Fragment-->
+    <string name="fragment_developer_title">Fragment Developer title</string>
+    <string name="fragment_developer_repolist_button_title">Github repo list</string>
+
 </resources>

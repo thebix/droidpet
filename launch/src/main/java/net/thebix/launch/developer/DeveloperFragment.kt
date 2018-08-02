@@ -1,4 +1,4 @@
-package net.thebix.droidpet.launch.developer
+package net.thebix.launch.developer
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,12 +10,12 @@ import android.widget.Button
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.disposables.CompositeDisposable
 import net.thebix.common_android.DroidpetActivity
-import net.thebix.droidpet.R
-import net.thebix.droidpet.launch.developer.di.DeveloperComponent
-import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator
-import net.thebix.droidpet.launch.developer.navigation.DeveloperFragmentNavigator.Companion.scope
-import net.thebix.droidpet.navigation.NavigatorHolder
-import net.thebix.droidpet.navigation.NavigatorImpl
+import net.thebix.common_android.NavigatorHolder
+import net.thebix.common_android.NavigatorImpl
+import net.thebix.launch.R
+import net.thebix.launch.developer.di.DeveloperComponent
+import net.thebix.launch.developer.navigation.DeveloperFragmentNavigator
+import net.thebix.launch.developer.navigation.DeveloperFragmentNavigator.Companion.scope
 import javax.inject.Inject
 
 class DeveloperFragment : Fragment() {
