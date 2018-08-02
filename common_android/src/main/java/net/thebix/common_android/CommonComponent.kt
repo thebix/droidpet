@@ -5,7 +5,6 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import net.thebix.common.ApplicationContext
-import net.thebix.common.DroidpetComponent
 import javax.inject.Scope
 
 @Scope
@@ -24,12 +23,14 @@ interface CommonComponent {
     @ApplicationContext
     fun getAppContext(): Context
 
-    fun getNavigatorHolder(): NavigatorHolder
-
+    fun getNavigationManager(): NavigationManager
 }
 
 @Module
-class CommonModule(private val appContext: Context) {
+class CommonModule(
+        private val appContext: Context,
+        private val navigationManager: NavigationManager
+) {
 
 
     // TODO: try Binds
@@ -39,9 +40,9 @@ class CommonModule(private val appContext: Context) {
     fun provideApplicationContext(): Context =
         appContext.applicationContext
 
-    @Suppress("unused")
+
     @Provides
     @ApplicationScope
-    fun provideNavigatorHolder(): NavigatorHolder = NavigatorHolderImpl()
+    fun provideNavigationManager() = navigationManager
 
 }

@@ -7,9 +7,9 @@ import net.thebix.common_android.DaggerCommonComponent
 import net.thebix.common_android.DroidpetAppBase
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
+import net.thebix.droidpet.navigation.NavigationManagerImpl
 import timber.log.Timber
 
-@Suppress("unused")
 class DroidpetApp : DroidpetAppBase() {
 
     override fun onCreate() {
@@ -36,7 +36,12 @@ class DroidpetApp : DroidpetAppBase() {
     override fun getCommonComponent(): CommonComponent {
         if (commonComponent == null) {
             commonComponent = DaggerCommonComponent.builder()
-                .commonModule(CommonModule(applicationContext))
+                .commonModule(
+                    CommonModule(
+                        applicationContext,
+                        NavigationManagerImpl(applicationContext)
+                    )
+                )
                 .build()
         }
         return commonComponent!!

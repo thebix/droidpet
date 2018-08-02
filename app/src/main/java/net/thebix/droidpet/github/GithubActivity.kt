@@ -3,8 +3,8 @@ package net.thebix.droidpet.github
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import net.thebix.droidpet.R
 import net.thebix.common_android.DroidpetActivity
+import net.thebix.droidpet.R
 import net.thebix.droidpet.github.di.DaggerGithubActivityComponent
 import net.thebix.droidpet.github.repolist.RepolistFragment
 import net.thebix.network.di.DaggerNetworkComponent
@@ -13,7 +13,6 @@ class GithubActivity : DroidpetActivity() {
 
     companion object {
 
-        @Suppress("MemberVisibilityCanBePrivate")
         @JvmStatic
         fun createIntent(context: Context) = Intent(context, GithubActivity::class.java)
     }
