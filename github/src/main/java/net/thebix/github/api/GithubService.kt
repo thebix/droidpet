@@ -1,6 +1,6 @@
-package net.thebix.droidpet.github.api
+package net.thebix.github.api
 
-import net.thebix.droidpet.github.api.models.Repo
+import net.thebix.github.api.models.Repo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

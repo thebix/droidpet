@@ -1,4 +1,4 @@
-package net.thebix.droidpet.github.di
+package net.thebix.github.di
 
 import dagger.Binds
 import dagger.Component
@@ -8,9 +8,9 @@ import dagger.multibindings.IntoMap
 import net.thebix.common.DroidpetComponent
 import net.thebix.common.DroidpetComponentBuilder
 import net.thebix.common.DroidpetComponentKey
-import net.thebix.droidpet.github.GithubActivity
-import net.thebix.droidpet.github.api.GithubService
-import net.thebix.droidpet.github.repolist.di.RepolistComponent
+import net.thebix.github.GithubActivity
+import net.thebix.github.api.GithubService
+import net.thebix.github.repolist.di.RepolistComponent
 import net.thebix.network.di.NetworkComponent
 import retrofit2.Retrofit
 import javax.inject.Scope

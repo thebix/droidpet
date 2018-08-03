@@ -1,3 +1,4 @@
 include ':app', ':network', ':common', ':common_android',
 
-        ':launch'
+        ':launch',
+        ':github'

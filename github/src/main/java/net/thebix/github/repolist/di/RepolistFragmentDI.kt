@@ -1,10 +1,10 @@
-package net.thebix.droidpet.github.repolist.di
+package net.thebix.github.repolist.di
 
 import dagger.Module
 import dagger.Subcomponent
 import net.thebix.common.DroidpetComponent
 import net.thebix.common.DroidpetComponentBuilder
-import net.thebix.droidpet.github.repolist.RepolistFragment
+import net.thebix.github.repolist.RepolistFragment
 import javax.inject.Scope
 
 @Scope

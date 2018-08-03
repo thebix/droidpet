@@ -2,10 +2,9 @@ package net.thebix.droidpet.navigation
 
 import android.content.Context
 import android.os.Bundle
-import net.thebix.common_android.ApplicationScope
 import net.thebix.common_android.NavigationManager
-import net.thebix.droidpet.github.GithubActivity
 import net.thebix.droidpet.splash.SplashActivity
+import net.thebix.github.GithubActivity
 
 internal class NavigationManagerImpl(context: Context) : NavigationManager {
 

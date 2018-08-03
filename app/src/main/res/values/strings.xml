@@ -5,7 +5,4 @@
     <string name="activity_splash_title">Activity Splash title</string>
     <string name="activity_splash_label">Droidpet Splash label</string>
 
-    <!-- Github Repolist -->
-    <string name="github_repolist_title">Github Repolist title</string>
-    <string name="github_repolist_network_error">Error while requesting remote service</string>
 </resources>
