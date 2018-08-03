@@ -1,0 +1,26 @@
+ext.kotlin_version = '1.2.51'
+
+ext.libs = [
+        dagger                   : 'com.google.dagger:dagger:2.16',
+        daggerCompiler           : 'com.google.dagger:dagger-compiler:2.16',
+        espressoCore             : 'com.android.support.test.espresso:espresso-core:3.0.2',
+        junit                    : 'junit:junit:4.12',
+        kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+        kotlinReflect            : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+        leakCanary               : 'com.squareup.leakcanary:leakcanary-android:1.6.1',
+        leakCanaryNoOp           : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1',
+        leakCanarySupportFragment: 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1',
+        okhttp                   : 'com.squareup.okhttp3:okhttp:3.10.0',
+        okhttpLoggingInterceptor : 'com.squareup.okhttp3:logging-interceptor:3.10.0',
+        retrofit                 : 'com.squareup.retrofit2:retrofit:2.3.0',
+        retrofitConverterJson    : 'com.squareup.retrofit2:converter-gson:2.3.0',
+        rxBinding                : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+        rxJava2                  : "io.reactivex.rxjava2:rxjava:2.1.15",
+        slf4j                    : 'org.slf4j:log4j-over-slf4j:1.7.21',
+        slf4jTimber              : 'com.arcao:slf4j-timber:3.0',
+        supportAppCompat         : 'com.android.support:appcompat-v7:27.1.1',
+        supportFragment          : 'com.android.support:support-fragment:27.1.1',
+        supportRunner            : 'com.android.support.test:runner:1.0.2',
+        testRunner               : 'com.android.support.test:runner:1.0.2',
+        timber                   : 'com.jakewharton.timber:timber:4.7.0'
+]

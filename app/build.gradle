@@ -26,19 +26,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation 'com.jakewharton.timber:timber:4.7.0'
-    implementation 'com.google.dagger:dagger:2.16'
-    kapt 'com.google.dagger:dagger-compiler:2.16'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
+    implementation libs.kotlin
+    implementation libs.supportAppCompat
+    implementation libs.kotlinReflect
+    implementation libs.timber
+    implementation libs.dagger
+    kapt libs.daggerCompiler
+    debugImplementation libs.leakCanary
+    releaseImplementation libs.leakCanaryNoOp
+    debugImplementation libs.leakCanarySupportFragment
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation libs.junit
+    androidTestImplementation libs.testRunner
+    androidTestImplementation libs.espressoCore
 
     debugImplementation project(path: ':common')
     releaseImplementation project(path: ':common')

@@ -36,14 +36,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation libs.supportAppCompat
+    testImplementation libs.junit
+    androidTestImplementation libs.testRunner
+    androidTestImplementation libs.espressoCore
 
-    implementation 'com.jakewharton.timber:timber:4.7.0'
-    implementation 'com.google.dagger:dagger:2.16'
-    kapt 'com.google.dagger:dagger-compiler:2.16'
+    implementation libs.timber
+    implementation libs.dagger
+    kapt libs.daggerCompiler
 
     debugImplementation project(path: ':common')
     releaseImplementation project(path: ':common')
