@@ -6,20 +6,12 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation libs.kotlin
     implementation libs.kotlinReflect
-    implementation libs.rxJava2
-    implementation libs.timber
-    implementation libs.slf4j
-    implementation libs.slf4jTimber
     implementation libs.retrofit
-    implementation libs.retrofitConverterJson
-    implementation libs.okhttp
-    implementation libs.okhttpLoggingInterceptor
     implementation libs.dagger
     kapt libs.daggerCompiler
-
-    api project(path: ':network:network-api')
 }
 
 sourceCompatibility = "1.7"

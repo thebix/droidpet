@@ -1,4 +1,6 @@
-include ':app', ':network', ':common', ':common_android',
+include ':app',
+        ':common', ':common_android',
+        ':network', ':network:network-api',
 
         ':launch',
         ':github'

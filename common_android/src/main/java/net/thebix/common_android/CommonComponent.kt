@@ -32,8 +32,6 @@ class CommonModule(
         private val navigationManager: NavigationManager
 ) {
 
-
-    // TODO: try Binds
     @Provides
     @ApplicationScope
     @ApplicationContext
