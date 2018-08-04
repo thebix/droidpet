@@ -1,7 +1,6 @@
 package net.thebix.network.di
 
 import dagger.Component
-import retrofit2.Retrofit
 
 @NetworkScope
 @Component(
@@ -11,6 +10,13 @@ import retrofit2.Retrofit
 )
 interface NetworkComponentImpl : NetworkComponent {
 
-    override fun getRetrofitBuilder(): Retrofit.Builder
+    /**
+     * Info: in case of set custom timeout, use custom builder
+     *  @Component.Builder
+     *  interface Builder: NetworkComponent.Builder {
+     *      @BindsInstance
+     *      override fun timeout(timeout: Int): Builder
+     *  }
+     */
 
 }

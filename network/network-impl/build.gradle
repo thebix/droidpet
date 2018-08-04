@@ -4,11 +4,16 @@ apply plugin: 'kotlin'
 
 apply plugin: 'kotlin-kapt'
 
+kapt.useBuildCache = true
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation libs.kotlin
     implementation libs.kotlinReflect
+    implementation libs.timber
+    implementation libs.slf4j
+    implementation libs.slf4jTimber
     implementation libs.retrofit
     implementation libs.retrofitConverterJson
     implementation libs.okhttp

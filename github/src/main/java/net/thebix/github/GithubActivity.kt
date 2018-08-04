@@ -6,7 +6,8 @@ import android.os.Bundle
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.github.di.DaggerGithubActivityComponent
 import net.thebix.github.repolist.RepolistFragment
-import net.thebix.network.di.DaggerNetworkComponent
+import net.thebix.network.di.NetworkComponent
+import net.thebix.network.di.create
 
 class GithubActivity : DroidpetActivity() {
 
@@ -20,7 +21,7 @@ class GithubActivity : DroidpetActivity() {
         super.onCreate(savedInstanceState)
 
         val githubActivityComponent = DaggerGithubActivityComponent.builder()
-            .networkComponent(DaggerNetworkComponent.create())
+            .networkComponent(NetworkComponent.create())
             .build()
         githubActivityComponent.inject(this)
 

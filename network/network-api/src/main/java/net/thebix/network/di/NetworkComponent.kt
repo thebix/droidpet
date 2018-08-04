@@ -11,6 +11,8 @@ annotation class NetworkScope
 
 interface NetworkComponent {
 
+    companion object
+
     fun getRetrofitBuilder(): Retrofit.Builder
 
     /**
@@ -21,5 +23,4 @@ interface NetworkComponent {
      *      fun build(): NetworkComponent
      * }
      */
-
 }
