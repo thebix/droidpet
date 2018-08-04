@@ -16,6 +16,7 @@ dependencies {
     implementation libs.slf4jTimber
     implementation libs.retrofit
     implementation libs.retrofitConverterJson
+    implementation libs.retrofitAdapterRxJava
     implementation libs.okhttp
     implementation libs.okhttpLoggingInterceptor
     implementation libs.dagger

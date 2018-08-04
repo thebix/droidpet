@@ -20,6 +20,7 @@ ext.libs = [
         okhttpLoggingInterceptor : 'com.squareup.okhttp3:logging-interceptor:3.10.0',
         retrofit                 : 'com.squareup.retrofit2:retrofit:2.3.0',
         retrofitConverterJson    : 'com.squareup.retrofit2:converter-gson:2.3.0',
+        retrofitAdapterRxJava    : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
         rxBinding                : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
         rxJava2                  : "io.reactivex.rxjava2:rxjava:2.1.15",
         slf4j                    : 'org.slf4j:log4j-over-slf4j:1.7.21',
