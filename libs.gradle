@@ -1,5 +1,11 @@
 ext.kotlin_version = '1.2.51'
 
+ext.androidConfig = [
+        compileSdkVersion: 27,
+        minSdkVersion    : 23,
+        targetSdkVersion : 27
+]
+
 ext.libs = [
         dagger                   : 'com.google.dagger:dagger:2.16',
         daggerCompiler           : 'com.google.dagger:dagger-compiler:2.16',
