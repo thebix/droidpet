@@ -16,7 +16,7 @@ internal class NavigationManagerImpl(context: Context) : NavigationManager {
             "Github" -> appContext.startActivity(GithubActivity.createIntent(appContext))
             "Error" -> {
                 if (params is NavigationParams.ErrorParams) {
-                    appContext.startActivity(InfoActivity.createIntent(appContext))
+                    appContext.startActivity(InfoActivity.createIntent(appContext, params))
                 } else {
                     appContext.startActivity(InfoActivity.createIntent(appContext))
                 }

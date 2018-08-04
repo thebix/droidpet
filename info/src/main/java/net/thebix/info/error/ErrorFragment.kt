@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.TextView
+import net.thebix.common_android.FragmentArgumentDelegate
 import net.thebix.info.R
 
 class ErrorFragment : Fragment() {
@@ -25,10 +26,9 @@ class ErrorFragment : Fragment() {
     private val subtitleView get() = view?.findViewById(R.id.fragment_error_subtitle) as TextView?
     private val infoView get() = view?.findViewById(R.id.fragment_error_info) as TextView?
 
-    // TODO: properly store the state
-    private var title: String = ""
-    private var subtitle: String = ""
-    private var info: String = ""
+    private var title by FragmentArgumentDelegate<String>()
+    private var subtitle by FragmentArgumentDelegate<String>()
+    private var info by FragmentArgumentDelegate<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_error, container, false)

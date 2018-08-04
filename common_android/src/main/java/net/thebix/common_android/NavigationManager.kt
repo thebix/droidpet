@@ -17,9 +17,9 @@ interface NavigationManager {
 sealed class NavigationParams {
 
     class ErrorParams(
-            val title: String,
-            val subtitle: String,
-            val info: String
+            val title: String = "",
+            val subtitle: String = "",
+            val info: String = ""
     ) : NavigationParams()
 
 }
