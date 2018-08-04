@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Droidpet" />
+
+    <!-- Text -->
+    <style name="Droidpet.Text" />
+
+    <style name="Droidpet.Text.16sp">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+
+    <style name="Droidpet.Text.20sp">
+        <item name="android:textSize">@dimen/text_size_20sp</item>
+    </style>
+
+    <style name="Droidpet.Text.24sp">
+        <item name="android:textSize">@dimen/text_size_24sp</item>
+    </style>
+
+</resources>
