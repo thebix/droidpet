@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/droidpet_red_light"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/padding_40dp"
+    android:paddingStart="@dimen/padding_40dp">
+
+    <TextView
+        android:id="@+id/fragment_error_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_40dp"
+        android:gravity="center"
+        android:text="@string/error_title"
+        android:textAppearance="@style/Droidpet.Text.24sp"
+        tools:text="Error screen title Error screen title Error screen title" />
+
+    <TextView
+        android:id="@+id/fragment_error_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:gravity="center"
+        android:text="@string/error_subtitle"
+        android:textAppearance="@style/Droidpet.Text.20sp"
+        tools:text="Error screen title" />
+
+    <TextView
+        android:id="@+id/fragment_error_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_60dp"
+        android:text="@string/error_info"
+        android:textAppearance="@style/Droidpet.Text.16sp"
+        tools:text="Error screen title Error screen title Error screen title Error screen title v vError screen title vError screen title Error screen title Error screen titleError screen title vError screen titleError screen title Error screen titleError screen title Error screen title" />
+</LinearLayout>

@@ -3,4 +3,5 @@ include ':app', ':network-impl',
         ':network', ':network:network-api', ':network:network-impl',
 
         ':launch',
-        ':github'
+        ':github',
+        ':info'

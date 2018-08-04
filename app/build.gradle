@@ -48,6 +48,9 @@ dependencies {
 
     debugImplementation project(path: ':launch')
     releaseImplementation project(path: ':launch')
+    debugImplementation project(path: ':info')
+    releaseImplementation project(path: ':info')
+
     debugImplementation project(path: ':github')
     releaseImplementation project(path: ':github')
 }
