@@ -1,9 +1,11 @@
 package net.thebix.droidpet
 
 import com.squareup.leakcanary.LeakCanary
-import net.thebix.common_android.CommonComponent
-import net.thebix.common_android.CommonModule
-import net.thebix.common_android.DaggerCommonComponent
+import net.thebix.common.di.CommonComponent
+import net.thebix.common_android.CommonAndroidComponent
+import net.thebix.common_android.CommonAndroidModule
+import net.thebix.common_android.DaggerCommonAndroidComponent
+import net.thebix.common.di.DaggerCommonComponent
 import net.thebix.common_android.DroidpetAppBase
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
@@ -31,20 +33,29 @@ class DroidpetApp : DroidpetAppBase() {
     private val droidpetAppComponent by lazy<DroidpetAppComponent> {
         DaggerDroidpetAppComponent.create()
     }
+
     private var commonComponent: CommonComponent? = null
+    private var commonAndroidComponent: CommonAndroidComponent? = null
 
     override fun getCommonComponent(): CommonComponent {
         if (commonComponent == null) {
-            commonComponent = DaggerCommonComponent.builder()
-                .commonModule(
-                    CommonModule(
+            commonComponent = DaggerCommonComponent.create()
+        }
+        return commonComponent!!
+    }
+
+    override fun getCommonAndroidComponent(): CommonAndroidComponent {
+        if (commonAndroidComponent == null) {
+            commonAndroidComponent = DaggerCommonAndroidComponent.builder()
+                .commonAndroidModule(
+                    CommonAndroidModule(
                         applicationContext,
                         NavigationManagerImpl(applicationContext)
                     )
                 )
                 .build()
         }
-        return commonComponent!!
+        return commonAndroidComponent!!
     }
 
     private fun initDagger() {

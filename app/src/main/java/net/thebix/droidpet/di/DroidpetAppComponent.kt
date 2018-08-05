@@ -3,7 +3,7 @@ package net.thebix.droidpet.di
 import dagger.Component
 import dagger.Module
 import net.thebix.common.DroidpetComponent
-import net.thebix.common_android.ApplicationScope
+import net.thebix.common.di.ApplicationScope
 import net.thebix.droidpet.DroidpetApp
 
 @ApplicationScope

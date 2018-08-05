@@ -5,20 +5,16 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import net.thebix.common.ApplicationContext
-import javax.inject.Scope
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class ApplicationScope
+import net.thebix.common.di.ApplicationScope
 
 @ApplicationScope
 @Component
     (
     modules = [
-        CommonModule::class
+        CommonAndroidModule::class
     ]
 )
-interface CommonComponent {
+interface CommonAndroidComponent {
 
     @ApplicationContext
     fun getAppContext(): Context
@@ -27,7 +23,7 @@ interface CommonComponent {
 }
 
 @Module
-class CommonModule(
+class CommonAndroidModule(
         private val appContext: Context,
         private val navigationManager: NavigationManager
 ) {

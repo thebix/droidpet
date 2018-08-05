@@ -14,7 +14,7 @@ class LaunchActivity : DroidpetActivity() {
         Timber.d("Launch activity started")
 
         val launchActivityComponent = DaggerLaunchActivityComponent.builder()
-            .commonComponent((application as DroidpetAppBase).getCommonComponent())
+            .commonAndroidComponent((application as DroidpetAppBase).getCommonAndroidComponent())
             .build()
         launchActivityComponent.inject(this)
 
