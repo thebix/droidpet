@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,8 +14,6 @@ import io.reactivex.disposables.Disposable
 import net.thebix.common.mvp.mvpBindUi
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.github.R
-import net.thebix.github.api.GithubService
-import net.thebix.github.api.models.Repo
 import net.thebix.github.repolist.di.RepolistComponent
 import net.thebix.github.repolist.mvp.Fetching
 import net.thebix.github.repolist.mvp.RepolistFragmentView
@@ -31,9 +30,8 @@ class RepolistFragment : Fragment(),
     }
 
     private val repolistItems get() = view!!.findViewById(R.id.fragment_github_repolist_items) as TextView
+    private val searchButton get() = view!!.findViewById(R.id.github_repolist_search_button) as View
 
-    @Inject
-    lateinit var githubService: GithubService
     @Inject
     lateinit var presenter: RepolistPresenter
 
@@ -63,8 +61,8 @@ class RepolistFragment : Fragment(),
         super.onStop()
     }
 
-    override fun getReposList(): Observable<List<Repo>> {
-        return githubService.repoList("thebix")
+    override fun fetchReposListByUser(): Observable<String> {
+        return RxView.clicks(searchButton).map { "thebix" }
     }
 
     override fun showReposListFetchStart(): (Observable<Fetching.Start>) -> Disposable {

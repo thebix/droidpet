@@ -7,7 +7,7 @@ import net.thebix.github.api.models.Repo
 
 interface RepolistFragmentView {
 
-    fun getReposList(): Observable<List<Repo>>
+    fun fetchReposListByUser(): Observable<String>
 
     fun showReposListFetchStart(): (Observable<Fetching.Start>) -> Disposable
     fun showReposListFetchError(): (Observable<Fetching.Error>) -> Disposable

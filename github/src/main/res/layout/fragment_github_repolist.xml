@@ -11,6 +11,13 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/github_repolist_title" />
 
+    <Button
+        android:id="@+id/github_repolist_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/github_repolist_search_button" />
+
     <TextView
         android:id="@+id/fragment_github_repolist_items"
         android:layout_width="wrap_content"
