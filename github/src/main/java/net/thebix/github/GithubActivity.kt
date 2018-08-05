@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import net.thebix.common_android.DroidpetActivity
+import net.thebix.common_android.DroidpetAppBase
 import net.thebix.github.di.DaggerGithubActivityComponent
 import net.thebix.github.repolist.RepolistFragment
 import net.thebix.network.di.NetworkComponent
@@ -21,6 +22,7 @@ class GithubActivity : DroidpetActivity() {
         super.onCreate(savedInstanceState)
 
         val githubActivityComponent = DaggerGithubActivityComponent.builder()
+            .commonComponent((application as DroidpetAppBase).getCommonComponent())
             .networkComponent(NetworkComponent.create())
             .build()
         githubActivityComponent.inject(this)

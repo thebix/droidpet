@@ -8,6 +8,7 @@ import dagger.multibindings.IntoMap
 import net.thebix.common.DroidpetComponent
 import net.thebix.common.DroidpetComponentBuilder
 import net.thebix.common.DroidpetComponentKey
+import net.thebix.common.di.CommonComponent
 import net.thebix.github.GithubActivity
 import net.thebix.github.api.GithubService
 import net.thebix.github.repolist.di.RepolistComponent
@@ -22,6 +23,7 @@ annotation class GithubActivityScope
 @GithubActivityScope
 @Component(
     dependencies = [
+        CommonComponent::class,
         NetworkComponent::class
     ],
     modules = [
@@ -34,6 +36,7 @@ interface GithubActivityComponent : DroidpetComponent {
 
     @Component.Builder
     interface Builder : DroidpetComponentBuilder<GithubActivityComponent> {
+        fun commonComponent(commonComponent: CommonComponent): Builder
         fun networkComponent(networkComponent: NetworkComponent): Builder
         override fun build(): GithubActivityComponent
     }

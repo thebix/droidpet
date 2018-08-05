@@ -6,18 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import net.thebix.common.mvp.mvpBindUi
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.github.R
 import net.thebix.github.api.GithubService
 import net.thebix.github.api.models.Repo
 import net.thebix.github.repolist.di.RepolistComponent
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import net.thebix.github.repolist.mvp.Fetching
+import net.thebix.github.repolist.mvp.RepolistFragmentView
+import net.thebix.github.repolist.mvp.RepolistPresenter
 import timber.log.Timber
+import java.io.IOException
 import javax.inject.Inject
 
-class RepolistFragment : Fragment() {
+class RepolistFragment : Fragment(),
+                         RepolistFragmentView {
 
     companion object {
         fun newInstance() = RepolistFragment()
@@ -27,6 +34,10 @@ class RepolistFragment : Fragment() {
 
     @Inject
     lateinit var githubService: GithubService
+    @Inject
+    lateinit var presenter: RepolistPresenter
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,21 +52,50 @@ class RepolistFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        githubService.repoList("thebix")
-            .enqueue(object : Callback<List<Repo>> {
-                override fun onFailure(call: Call<List<Repo>>?, t: Throwable?) {
-                    Timber.e(t)
-                    repolistItems.setText(R.string.github_repolist_network_error)
-                }
+        disposables.add(
+            presenter.bind(this)
+        )
+    }
 
-                override fun onResponse(call: Call<List<Repo>>, response: Response<List<Repo>>) {
-                    val repos = response.body() ?: emptyList()
-                    Timber.d("Received the list of repos, count: <${response.body()?.size}>")
-                    if (repos.isEmpty()) {
-                        return
-                    }
+    override fun onStop() {
+        presenter.dispose()
+        disposables.clear()
+        super.onStop()
+    }
+
+    override fun getReposList(): Observable<List<Repo>> {
+        return githubService.repoList("thebix")
+    }
+
+    override fun showReposListFetchStart(): (Observable<Fetching.Start>) -> Disposable {
+        return { observable ->
+            observable.mvpBindUi(AndroidSchedulers.mainThread()) {
+                Timber.d("Fetching started")
+                repolistItems.text = "Fetching started"
+            }
+        }
+    }
+
+    override fun showReposListFetchError(): (Observable<Fetching.Error>) -> Disposable {
+        return { observable ->
+            observable.mvpBindUi(AndroidSchedulers.mainThread()) {
+                if (it.throwable !is IOException) {
+                    Timber.e(it.throwable)
+                }
+                repolistItems.text = "Fetching error"
+            }
+        }
+    }
+
+    override fun showReposListFetchEnd(): (Observable<Fetching.End>) -> Disposable {
+        return { observable ->
+            observable.mvpBindUi(AndroidSchedulers.mainThread()) { fetchingEnd ->
+                val repos = fetchingEnd.items
+                Timber.d("Received the list of repos, count: <${repos.size}>")
+                if (repos.isNotEmpty()) {
                     repolistItems.text = repos.joinToString("\n") { it.name }
                 }
-            })
+            }
+        }
     }
 }
