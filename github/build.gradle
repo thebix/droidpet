@@ -32,6 +32,7 @@ dependencies {
     implementation libs.kotlin
     implementation libs.supportAppCompat
     implementation libs.supportFragment
+    implementation libs.supportConstraint
     implementation libs.kotlinReflect
     implementation libs.rxJava2
     implementation libs.rxBinding

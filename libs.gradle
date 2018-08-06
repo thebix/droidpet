@@ -26,6 +26,7 @@ ext.libs = [
         slf4j                    : 'org.slf4j:log4j-over-slf4j:1.7.21',
         slf4jTimber              : 'com.arcao:slf4j-timber:3.0',
         supportAppCompat         : 'com.android.support:appcompat-v7:27.1.1',
+        supportConstraint        : 'com.android.support.constraint:constraint-layout:1.1.2',
         supportFragment          : 'com.android.support:support-fragment:27.1.1',
         supportRunner            : 'com.android.support.test:runner:1.0.2',
         testRunner               : 'com.android.support.test:runner:1.0.2',

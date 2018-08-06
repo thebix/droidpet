@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.RxView
@@ -31,6 +33,7 @@ class RepolistFragment : Fragment(),
 
     private val repolistItems get() = view!!.findViewById(R.id.fragment_github_repolist_items) as TextView
     private val searchButton get() = view!!.findViewById(R.id.github_repolist_search_button) as View
+    private val progressView get() = view!!.findViewById(R.id.fragment_repolist_items) as View
 
     @Inject
     lateinit var presenter: RepolistPresenter
@@ -73,7 +76,7 @@ class RepolistFragment : Fragment(),
         return { observable ->
             observable.mvpBindUi(AndroidSchedulers.mainThread()) {
                 Timber.d("Fetching started")
-                repolistItems.text = "Fetching started"
+                progressView.visibility = VISIBLE
             }
         }
     }
@@ -81,6 +84,7 @@ class RepolistFragment : Fragment(),
     override fun showReposListFetchError(): (Observable<Fetching.Error>) -> Disposable {
         return { observable ->
             observable.mvpBindUi(AndroidSchedulers.mainThread()) {
+                progressView.visibility = GONE
                 if (it.throwable !is IOException) {
                     Timber.e(it.throwable)
                 }
@@ -92,6 +96,7 @@ class RepolistFragment : Fragment(),
     override fun showReposListFetchEnd(): (Observable<Fetching.End>) -> Disposable {
         return { observable ->
             observable.mvpBindUi(AndroidSchedulers.mainThread()) { fetchingEnd ->
+                progressView.visibility = GONE
                 val repos = fetchingEnd.items
                 Timber.d("Received the list of repos, count: <${repos.size}>")
                 if (repos.isNotEmpty()) {
