@@ -57,8 +57,12 @@ class RepolistFragment : Fragment(),
 
     override fun onStop() {
         presenter.dispose()
-        disposables.clear()
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        disposables.clear()
+        super.onDestroy()
     }
 
     override fun fetchReposListByUser(): Observable<String> {
