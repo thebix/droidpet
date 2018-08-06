@@ -38,7 +38,7 @@ dependencies {
     implementation libs.timber
 
     testImplementation libs.junit
-    androidTestImplementation libs.testRunner
+    androidTestImplementation libs.supportTestRunner
     androidTestImplementation libs.espressoCore
 
     debugImplementation project(path: ':common_android')

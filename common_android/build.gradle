@@ -31,7 +31,7 @@ dependencies {
 
     implementation libs.supportAppCompat
     testImplementation libs.junit
-    androidTestImplementation libs.testRunner
+    androidTestImplementation libs.supportTestRunner
     androidTestImplementation libs.espressoCore
 
     implementation libs.timber
