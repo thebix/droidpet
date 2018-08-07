@@ -25,6 +25,7 @@ interface RepolistComponent : DroidpetComponent {
     }
 
     fun inject(repolistFragment: RepolistFragment)
+    fun inject(repolistFragment: net.thebix.github.repolist.mvi.RepolistFragment)
 
 }
 

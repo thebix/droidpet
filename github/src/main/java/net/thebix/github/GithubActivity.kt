@@ -6,7 +6,7 @@ import android.os.Bundle
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.common_android.DroidpetAppBase
 import net.thebix.github.di.DaggerGithubActivityComponent
-import net.thebix.github.repolist.RepolistFragment
+import net.thebix.github.repolist.mvi.RepolistFragment
 import net.thebix.network.di.NetworkComponent
 import net.thebix.network.di.create
 
