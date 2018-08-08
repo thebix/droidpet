@@ -10,6 +10,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.RxView
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import net.thebix.common_android.DroidpetActivity
@@ -48,14 +49,14 @@ class RepolistFragment : Fragment() {
         disposables.addAll(
             presenter.stateObserver()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(::render),
-            RxView.clicks(searchButton).map { "thebix" }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { presenter.pushIntention(RepolistIntention.FetchRepos(it)) }
+                .subscribe(::render)
         )
+        // TODO: adds new subscription every onStart, doesn't unsubscribe old one
+        presenter.handleIntentions(intentions())
     }
 
     override fun onDestroy() {
+        presenter.dispose()
         disposables.clear()
         super.onDestroy()
     }
@@ -70,4 +71,12 @@ class RepolistFragment : Fragment() {
             }
         }
     }
+
+    private fun intentions(): Observable<RepolistIntention> = Observable.merge(
+        listOf(
+            Observable.fromCallable { RepolistIntention.Init },
+            RxView.clicks(searchButton).map { "thebix" }
+                .map { RepolistIntention.FetchRepos(it) }
+        )
+    )
 }

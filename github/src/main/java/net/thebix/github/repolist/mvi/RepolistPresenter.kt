@@ -1,6 +1,7 @@
 package net.thebix.github.repolist.mvi
 
 import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import net.thebix.github.repolist.di.RepolistScope
@@ -12,14 +13,20 @@ import javax.inject.Inject
 class RepolistPresenter @Inject constructor(
         private val useCase: FetchReposListUseCase
 ) {
+
+    private val disposables = CompositeDisposable()
     // TODO: or Behaviour?
     private val intentionSubject = PublishSubject.create<RepolistIntention>()
 
     @Volatile
     private var prevState = RepolistState()
 
-    fun pushIntention(intention: RepolistIntention) {
-        intentionSubject.onNext(intention)
+    fun handleIntentions(intentions: Observable<out RepolistIntention>) {
+        disposables.add(
+            intentions
+                .subscribe {
+                    intentionSubject.onNext(it)
+                })
     }
 
     fun stateObserver(): Observable<RepolistState> {
@@ -53,6 +60,10 @@ class RepolistPresenter @Inject constructor(
                     }
             }
         }
+    }
+
+    fun dispose() {
+        disposables.clear()
     }
 
 }
