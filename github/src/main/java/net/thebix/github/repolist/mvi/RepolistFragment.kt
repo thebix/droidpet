@@ -46,15 +46,12 @@ class RepolistFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         disposables.addAll(
-            presenter.mapIntentionToState(RepolistIntention.Init)
+            presenter.stateObserver()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(::render),
             RxView.clicks(searchButton).map { "thebix" }
-                .switchMap {
-                    presenter.mapIntentionToState(RepolistIntention.FetchRepos(it))
-                }
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(::render)
+                .subscribe { presenter.pushIntention(RepolistIntention.FetchRepos(it)) }
         )
     }
 
