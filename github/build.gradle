@@ -29,6 +29,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation libs.archViewModel
     implementation libs.kotlin
     implementation libs.supportAppCompat
     implementation libs.supportFragment

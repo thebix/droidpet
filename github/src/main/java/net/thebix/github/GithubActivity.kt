@@ -19,21 +19,22 @@ class GithubActivity : DroidpetActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         val githubActivityComponent = DaggerGithubActivityComponent.builder()
             .commonComponent((application as DroidpetAppBase).getCommonComponent())
             .networkComponent(NetworkComponent.create())
             .build()
         githubActivityComponent.inject(this)
+        super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_github)
-        supportFragmentManager
-            .beginTransaction()
-            .apply {
-                replace(R.id.activity_github_root, RepolistFragment.newInstance(), RepolistFragment::class.simpleName)
-                commit()
-            }
-    }
 
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .apply {
+                    replace(R.id.activity_github_root, RepolistFragment.newInstance(), RepolistFragment::class.simpleName)
+                    commit()
+                }
+        }
+    }
 }

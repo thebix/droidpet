@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.jakewharton.rxbinding2.view.RxView
+import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
+import net.thebix.common.IoScheduler
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.launch.R
 import net.thebix.launch.developer.di.DeveloperComponent
@@ -27,12 +29,11 @@ class DeveloperFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         ((activity as DroidpetActivity).getDroidpetComponentBuilder(DeveloperComponent::class.java)
                 as DeveloperComponent.Builder)
             .build()
             .inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

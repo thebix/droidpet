@@ -10,13 +10,12 @@ import timber.log.Timber
 class LaunchActivity : DroidpetActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         Timber.d("Launch activity started")
-
         val launchActivityComponent = DaggerLaunchActivityComponent.builder()
             .commonAndroidComponent((application as DroidpetAppBase).getCommonAndroidComponent())
             .build()
         launchActivityComponent.inject(this)
+        super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_launch)
 

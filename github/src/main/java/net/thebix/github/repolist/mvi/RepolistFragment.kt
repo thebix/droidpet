@@ -1,5 +1,6 @@
 package net.thebix.github.repolist.mvi
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.annotation.UiThread
 import android.support.v4.app.Fragment
@@ -13,9 +14,13 @@ import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import net.thebix.common_android.DroidpetActivity
+import net.thebix.common_android.bindView
 import net.thebix.github.R
+import net.thebix.github.ViewModelFactory
 import net.thebix.github.repolist.di.RepolistComponent
+import timber.log.Timber
 import javax.inject.Inject
 
 class RepolistFragment : Fragment() {
@@ -24,45 +29,59 @@ class RepolistFragment : Fragment() {
         fun newInstance() = RepolistFragment()
     }
 
-    private val repolistItems get() = view!!.findViewById(R.id.fragment_github_repolist_items) as TextView
-    private val searchButton get() = view!!.findViewById(R.id.github_repolist_search_button) as View
-    private val progressView get() = view!!.findViewById(R.id.fragment_repolist_items) as View
+    private val repolistItems by bindView<TextView>(R.id.fragment_github_repolist_items)
+    private val searchButton by bindView<View>(R.id.github_repolist_search_button)
+    private val progressView by bindView<View>(R.id.fragment_repolist_items)
 
     @Inject
-    lateinit var presenter: RepolistPresenter
+    lateinit var interactor: RepolistInteractor
+    private val viewModel: RepolistViewModel by lazy(LazyThreadSafetyMode.NONE) {
+        // TODO: inject Scheduler
+        ViewModelProvider(this, ViewModelFactory(interactor, Schedulers.io()))
+            .get(RepolistViewModel::class.java)
+    }
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         val repolistComponent = (activity as DroidpetActivity).getDroidpetComponentBuilder(RepolistComponent::class.java)
             .build() as RepolistComponent
         repolistComponent.inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_github_repolist, container, false)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        viewModel.processIntentions(intentions())
+    }
+
     override fun onStart() {
         super.onStart()
         disposables.addAll(
-            presenter.stateObserver()
+            viewModel.states()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(::render)
+            ,viewModel.processIntentions(intentions())
+
         )
-        // TODO: adds new subscription every onStart, doesn't unsubscribe old one
-        presenter.handleIntentions(intentions())
+    }
+
+    override fun onStop() {
+        disposables.clear()
+        super.onStop()
     }
 
     override fun onDestroy() {
-        presenter.dispose()
-        disposables.clear()
+//        viewModel.dispose()
         super.onDestroy()
     }
 
     @UiThread
     private fun render(state: RepolistState) {
+        Timber.d("State: $state")
         with(state) {
             progressView.visibility = if (isReposFetching) VISIBLE else GONE
             when {

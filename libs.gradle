@@ -7,6 +7,7 @@ ext.androidConfig = [
 ]
 
 ext.versions = [
+        archLifecycle : "1.1.1",
         dagger        : '2.16',
         leakCanary    : '1.6.1',
         okhttp        : '3.10.0',
@@ -15,6 +16,7 @@ ext.versions = [
 ]
 
 ext.libs = [
+        archViewModel            : "android.arch.lifecycle:viewmodel:$versions.archLifecycle",
         dagger                   : "com.google.dagger:dagger:$versions.dagger",
         daggerCompiler           : "com.google.dagger:dagger-compiler:$versions.dagger",
         espressoCore             : 'com.android.support.test.espresso:espresso-core:3.0.2',

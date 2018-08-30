@@ -4,8 +4,7 @@
     <application>
         <activity
             android:name=".GithubActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
