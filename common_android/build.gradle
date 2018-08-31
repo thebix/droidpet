@@ -29,8 +29,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation libs.supportAppCompat
+    implementation libs.archViewModel
     testImplementation libs.junit
+    implementation libs.rxJava2
+    implementation libs.supportAppCompat
     androidTestImplementation libs.supportTestRunner
     androidTestImplementation libs.espressoCore
 
