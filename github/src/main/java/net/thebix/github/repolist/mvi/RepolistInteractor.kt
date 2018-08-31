@@ -4,19 +4,12 @@ import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import io.reactivex.Scheduler
 import net.thebix.common.IoScheduler
+import net.thebix.common_android.mvi.MviInteractor
 import net.thebix.github.repolist.di.RepolistScope
 import net.thebix.github.usecase.FetchReposListUseCase
 import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
-
-// TODO: move interfaces to common module, mvi package
-interface MviInteractor<Action : MviAction, Result : MviResult> {
-
-    // TODO: maybe fun?
-    val actionProcessor: ObservableTransformer<Action, Result>
-
-}
 
 @RepolistScope
 class RepolistInteractor @Inject constructor(
@@ -52,7 +45,7 @@ class RepolistInteractor @Inject constructor(
                 }
         }
 
-    override val actionProcessor: ObservableTransformer<RepolistAction, RepolistResult> =
+    override fun actionProcessor(): ObservableTransformer<RepolistAction, RepolistResult> =
         ObservableTransformer { actions: Observable<RepolistAction> ->
             actions
                 /**
