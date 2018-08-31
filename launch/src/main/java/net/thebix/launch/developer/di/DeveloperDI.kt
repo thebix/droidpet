@@ -34,11 +34,7 @@ interface DeveloperComponent : DroidpetComponent {
 @Module
 abstract class DeveloperModule {
 
-//    @Suppress("unused")
-//    @Binds
-//    @DeveloperScope
-//    abstract fun bindDeveloperFragmentNavigator(developerFragmentNavigator: DeveloperFragmentNavigatorImpl): DeveloperFragmentNavigator
-
+    @Suppress("unused")
     @Binds
     @DeveloperScope
     abstract fun bindDeveloperFragmentNavigator(developerFragmentNavigator: DeveloperFragmentNavigatorImpl): DeveloperFragmentNavigator

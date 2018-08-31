@@ -1,5 +1,7 @@
 package net.thebix.launch
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import net.thebix.common_android.DroidpetActivity
 import net.thebix.common_android.DroidpetAppBase
@@ -8,6 +10,14 @@ import net.thebix.launch.di.DaggerLaunchActivityComponent
 import timber.log.Timber
 
 class LaunchActivity : DroidpetActivity() {
+
+    companion object {
+
+        @JvmStatic
+        fun createIntent(context: Context): Intent {
+            return Intent(context, LaunchActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Timber.d("Launch activity started")
@@ -19,12 +29,14 @@ class LaunchActivity : DroidpetActivity() {
 
         setContentView(R.layout.activity_launch)
 
-        supportFragmentManager
-            .beginTransaction()
-            .apply {
-                replace(R.id.activity_launch_root, DeveloperFragment.newInstance(), DeveloperFragment::class.simpleName)
-                commit()
-            }
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .apply {
+                    replace(R.id.activity_launch_root, DeveloperFragment.newInstance(), DeveloperFragment::class.simpleName)
+                    commit()
+                }
+        }
     }
 
 }

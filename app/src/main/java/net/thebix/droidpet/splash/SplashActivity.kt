@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import net.thebix.droidpet.DroidpetApp
 import net.thebix.droidpet.R
-import net.thebix.launch.LaunchActivity
 import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
@@ -25,8 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // TODO: change to router
-        applicationContext.startActivity(Intent(applicationContext, LaunchActivity::class.java))
+        (application as DroidpetApp).getCommonAndroidComponent().getNavigationManager().startScreen("Launch")
     }
 
 }

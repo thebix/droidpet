@@ -6,6 +6,7 @@ import net.thebix.common_android.NavigationParams
 import net.thebix.droidpet.splash.SplashActivity
 import net.thebix.github.GithubActivity
 import net.thebix.info.InfoActivity
+import net.thebix.launch.LaunchActivity
 
 internal class NavigationManagerImpl(context: Context) : NavigationManager {
 
@@ -21,6 +22,7 @@ internal class NavigationManagerImpl(context: Context) : NavigationManager {
                     appContext.startActivity(InfoActivity.createIntent(appContext))
                 }
             }
+            "Launch" -> appContext.startActivity(LaunchActivity.createIntent(appContext))
             else -> appContext.startActivity(SplashActivity.createIntent(appContext))
         }
 
