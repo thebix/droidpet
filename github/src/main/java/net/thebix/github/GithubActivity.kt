@@ -3,6 +3,7 @@ package net.thebix.github
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import net.thebix.common.android.CommonAndroidComponent
 import net.thebix.common.android.DroidpetActivity
 import net.thebix.common.android.DroidpetAppBase
 import net.thebix.github.di.DaggerGithubActivityComponent
@@ -20,7 +21,7 @@ class GithubActivity : DroidpetActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val githubActivityComponent = DaggerGithubActivityComponent.builder()
-            .commonComponent((application as DroidpetAppBase).getCommonComponent())
+            .commonAndroidComponent((application as DroidpetAppBase).getCommonAndroidComponent())
             .networkComponent(NetworkComponent.create())
             .build()
         githubActivityComponent.inject(this)

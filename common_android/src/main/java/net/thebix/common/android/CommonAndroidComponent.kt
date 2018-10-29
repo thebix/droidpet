@@ -4,13 +4,17 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Scheduler
 import net.thebix.common.ApplicationContext
+import net.thebix.common.IoScheduler
 import net.thebix.common.di.ApplicationScope
+import net.thebix.common.di.CommonModule
 
 @ApplicationScope
 @Component
     (
     modules = [
+        CommonModule::class,
         CommonAndroidModule::class
     ]
 )
@@ -20,6 +24,9 @@ interface CommonAndroidComponent {
     fun getAppContext(): Context
 
     fun getNavigationManager(): NavigationManager
+
+    @IoScheduler
+    fun getIoScheduler(): Scheduler
 }
 
 @Module
