@@ -16,7 +16,8 @@ ext.versions = [
 ]
 
 ext.libs = [
-        archViewModel            : "android.arch.lifecycle:viewmodel:$versions.archLifecycle",
+        archLifecycleExtensions  : "android.arch.lifecycle:extensions:$versions.archLifecycle",
+        archLifecycleViewModel   : "android.arch.lifecycle:viewmodel:$versions.archLifecycle",
         dagger                   : "com.google.dagger:dagger:$versions.dagger",
         daggerCompiler           : "com.google.dagger:dagger-compiler:$versions.dagger",
         espressoCore             : 'com.android.support.test.espresso:espresso-core:3.0.2',
