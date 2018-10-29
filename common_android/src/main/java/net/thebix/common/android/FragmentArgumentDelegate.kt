@@ -2,7 +2,7 @@
 
 @file:Suppress("PackageName")
 
-package net.thebix.common_android
+package net.thebix.common.android
 
 import android.os.Binder
 import android.os.Bundle

@@ -14,8 +14,8 @@ import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import net.thebix.common_android.DroidpetActivity
-import net.thebix.common_android.bindView
+import net.thebix.common.android.DroidpetActivity
+import net.thebix.common.android.bindView
 import net.thebix.github.R
 import net.thebix.github.repolist.di.RepolistComponent
 import timber.log.Timber

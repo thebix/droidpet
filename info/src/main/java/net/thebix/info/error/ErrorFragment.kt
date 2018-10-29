@@ -7,7 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.TextView
-import net.thebix.common_android.FragmentArgumentDelegate
+import net.thebix.common.android.FragmentArgumentDelegate
 import net.thebix.info.R
 
 class ErrorFragment : Fragment() {

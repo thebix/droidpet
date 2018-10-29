@@ -2,11 +2,11 @@
 
 package net.thebix.github.repolist.mvi
 
-import net.thebix.common_android.mvi.MviAction
-import net.thebix.common_android.mvi.MviInitIntention
-import net.thebix.common_android.mvi.MviIntention
-import net.thebix.common_android.mvi.MviResult
-import net.thebix.common_android.mvi.MviState
+import net.thebix.common.android.mvi.MviAction
+import net.thebix.common.android.mvi.MviInitIntention
+import net.thebix.common.android.mvi.MviIntention
+import net.thebix.common.android.mvi.MviResult
+import net.thebix.common.android.mvi.MviState
 import net.thebix.github.api.models.Repo
 
 sealed class RepolistIntention : MviIntention {

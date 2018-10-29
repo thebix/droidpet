@@ -1,4 +1,4 @@
-package net.thebix.common_android.mvi
+package net.thebix.common.android.mvi
 
 import android.arch.lifecycle.ViewModel
 import io.reactivex.Observable

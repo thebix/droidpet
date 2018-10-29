@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import net.thebix.common.mvp.mvpBindUi
-import net.thebix.common_android.DroidpetActivity
+import net.thebix.common.android.DroidpetActivity
 import net.thebix.github.R
 import net.thebix.github.repolist.di.RepolistComponent
 import net.thebix.github.repolist.mvp.Fetching

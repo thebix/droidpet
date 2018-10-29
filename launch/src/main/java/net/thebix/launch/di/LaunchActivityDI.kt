@@ -7,7 +7,7 @@ import dagger.multibindings.IntoMap
 import net.thebix.common.DroidpetComponent
 import net.thebix.common.DroidpetComponentBuilder
 import net.thebix.common.DroidpetComponentKey
-import net.thebix.common_android.CommonAndroidComponent
+import net.thebix.common.android.CommonAndroidComponent
 import net.thebix.launch.LaunchActivity
 import net.thebix.launch.developer.di.DeveloperComponent
 import javax.inject.Scope

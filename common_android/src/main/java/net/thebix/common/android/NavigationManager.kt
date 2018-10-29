@@ -1,6 +1,6 @@
 @file:Suppress("PackageName")
 
-package net.thebix.common_android
+package net.thebix.common.android
 
 interface NavigationManager {
 

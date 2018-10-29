@@ -1,4 +1,4 @@
-package net.thebix.common_android
+package net.thebix.common.android
 
 import android.content.Context
 import dagger.Component

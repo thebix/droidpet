@@ -1,6 +1,6 @@
 package net.thebix.launch.developer.navigation
 
-import net.thebix.common_android.NavigationManager
+import net.thebix.common.android.NavigationManager
 import javax.inject.Inject
 
 interface DeveloperFragmentNavigator {

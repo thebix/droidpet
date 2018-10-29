@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import net.thebix.common_android.NavigationManager.Companion.EXTRA_INFO
-import net.thebix.common_android.NavigationManager.Companion.EXTRA_SUBTITLE
-import net.thebix.common_android.NavigationManager.Companion.EXTRA_TITLE
-import net.thebix.common_android.NavigationParams
+import net.thebix.common.android.NavigationManager.Companion.EXTRA_INFO
+import net.thebix.common.android.NavigationManager.Companion.EXTRA_SUBTITLE
+import net.thebix.common.android.NavigationManager.Companion.EXTRA_TITLE
+import net.thebix.common.android.NavigationParams
 import net.thebix.info.error.ErrorFragment
 
 class InfoActivity : AppCompatActivity() {

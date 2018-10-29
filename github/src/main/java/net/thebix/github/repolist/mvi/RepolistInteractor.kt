@@ -4,7 +4,7 @@ import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import io.reactivex.Scheduler
 import net.thebix.common.IoScheduler
-import net.thebix.common_android.mvi.MviInteractor
+import net.thebix.common.android.mvi.MviInteractor
 import net.thebix.github.repolist.di.RepolistScope
 import net.thebix.github.usecase.FetchReposListUseCase
 import timber.log.Timber

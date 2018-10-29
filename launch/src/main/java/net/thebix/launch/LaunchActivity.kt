@@ -3,8 +3,8 @@ package net.thebix.launch
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import net.thebix.common_android.DroidpetActivity
-import net.thebix.common_android.DroidpetAppBase
+import net.thebix.common.android.DroidpetActivity
+import net.thebix.common.android.DroidpetAppBase
 import net.thebix.launch.developer.DeveloperFragment
 import net.thebix.launch.di.DaggerLaunchActivityComponent
 import timber.log.Timber

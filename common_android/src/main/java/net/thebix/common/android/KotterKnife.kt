@@ -4,7 +4,7 @@
  */
 @file:Suppress("unused", "UNUSED_ANONYMOUS_PARAMETER", "SimplifiableCallChain", "PackageName")
 
-package net.thebix.common_android
+package net.thebix.common.android
 
 import android.app.Activity
 import android.app.Dialog

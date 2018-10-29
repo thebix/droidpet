@@ -3,8 +3,8 @@ package net.thebix.github
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import net.thebix.common_android.DroidpetActivity
-import net.thebix.common_android.DroidpetAppBase
+import net.thebix.common.android.DroidpetActivity
+import net.thebix.common.android.DroidpetAppBase
 import net.thebix.github.di.DaggerGithubActivityComponent
 import net.thebix.github.repolist.mvi.RepolistFragment
 import net.thebix.network.di.NetworkComponent

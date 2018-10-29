@@ -10,7 +10,7 @@ import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import net.thebix.common.IoScheduler
-import net.thebix.common_android.DroidpetActivity
+import net.thebix.common.android.DroidpetActivity
 import net.thebix.launch.R
 import net.thebix.launch.developer.di.DeveloperComponent
 import net.thebix.launch.developer.navigation.DeveloperFragmentNavigator

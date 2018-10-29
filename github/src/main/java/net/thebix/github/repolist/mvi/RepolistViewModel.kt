@@ -1,7 +1,7 @@
 package net.thebix.github.repolist.mvi
 
 import io.reactivex.functions.BiFunction
-import net.thebix.common_android.mvi.MviViewModel
+import net.thebix.common.android.mvi.MviViewModel
 
 class RepolistViewModel(
         interactor: RepolistInteractor

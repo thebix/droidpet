@@ -1,4 +1,4 @@
-package net.thebix.common_android;
+package net.thebix.common.android;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("net.thebix.common_android.test", appContext.getPackageName());
+        assertEquals("net.thebix.common.android.test", appContext.getPackageName());
     }
 }

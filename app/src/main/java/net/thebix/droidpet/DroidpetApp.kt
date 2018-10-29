@@ -2,11 +2,11 @@ package net.thebix.droidpet
 
 import com.squareup.leakcanary.LeakCanary
 import net.thebix.common.di.CommonComponent
-import net.thebix.common_android.CommonAndroidComponent
-import net.thebix.common_android.CommonAndroidModule
-import net.thebix.common_android.DaggerCommonAndroidComponent
+import net.thebix.common.android.CommonAndroidComponent
+import net.thebix.common.android.CommonAndroidModule
+import net.thebix.common.android.DaggerCommonAndroidComponent
 import net.thebix.common.di.DaggerCommonComponent
-import net.thebix.common_android.DroidpetAppBase
+import net.thebix.common.android.DroidpetAppBase
 import net.thebix.droidpet.di.DaggerDroidpetAppComponent
 import net.thebix.droidpet.di.DroidpetAppComponent
 import net.thebix.droidpet.navigation.NavigationManagerImpl

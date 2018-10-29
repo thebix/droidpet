@@ -1,8 +1,8 @@
 package net.thebix.droidpet.navigation
 
 import android.content.Context
-import net.thebix.common_android.NavigationManager
-import net.thebix.common_android.NavigationParams
+import net.thebix.common.android.NavigationManager
+import net.thebix.common.android.NavigationParams
 import net.thebix.droidpet.splash.SplashActivity
 import net.thebix.github.GithubActivity
 import net.thebix.info.InfoActivity
