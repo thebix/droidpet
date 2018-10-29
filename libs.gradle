@@ -7,7 +7,8 @@ ext.androidConfig = [
 ]
 
 ext.versions = [
-        archLifecycle : "1.1.1",
+        archLifecycle : "1.1.0",
+        archRoom      : "1.1.1",
         dagger        : '2.16',
         leakCanary    : '1.6.1',
         okhttp        : '3.10.0',
@@ -17,6 +18,9 @@ ext.versions = [
 
 ext.libs = [
         archViewModel            : "android.arch.lifecycle:viewmodel:$versions.archLifecycle",
+        archRoom                 : "android.arch.persistence.room:runtime:$versions.archRoom",
+        archRoomAnnotations      : "android.arch.persistence.room:compiler:$versions.archRoom",
+        archRoomRxJava           : "android.arch.persistence.room:rxjava2:$versions.archRoom",
         dagger                   : "com.google.dagger:dagger:$versions.dagger",
         daggerCompiler           : "com.google.dagger:dagger-compiler:$versions.dagger",
         espressoCore             : 'com.android.support.test.espresso:espresso-core:3.0.2',

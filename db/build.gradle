@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
 
@@ -27,8 +31,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation libs.archViewModel
+    implementation libs.archRoom
+    implementation libs.archRoomAnnotations
+    implementation libs.archRoomRxJava
+    implementation libs.dagger
+    kapt libs.daggerCompiler
+    implementation libs.rxJava2
+    implementation libs.timber
+
+    testImplementation libs.junit
+    androidTestImplementation libs.supportTestRunner
+    androidTestImplementation libs.espressoCore
+
+    debugImplementation project(path: ':common')
+    releaseImplementation project(path: ':common')
+    debugImplementation project(path: ':common_android')
+    releaseImplementation project(path: ':common_android')
 }
