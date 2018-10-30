@@ -18,12 +18,14 @@ class RepolistViewModel(
                     error = ""
                 )
                 is RepolistResult.FetchReposFinish -> prevState.copy(
-                    isReposFetching = false,
-                    items = result.items
+                    isReposFetching = false
                 )
                 is RepolistResult.FetchReposError -> prevState.copy(
                     isReposFetching = false,
                     error = "Error while loading"
+                )
+                is RepolistResult.Data -> prevState.copy(
+                    items = result.items
                 )
             }
         }

@@ -5,16 +5,18 @@ import io.reactivex.ObservableTransformer
 import io.reactivex.Scheduler
 import net.thebix.common.IoScheduler
 import net.thebix.common.android.mvi.MviInteractor
+import net.thebix.github.GithubRepository
 import net.thebix.github.repolist.di.RepolistScope
-import net.thebix.github.usecase.FetchReposListUseCase
+import net.thebix.github.usecase.FetchReposUseCase
 import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
 @RepolistScope
 class RepolistInteractor @Inject constructor(
-        private val fetchReposListUseCase: FetchReposListUseCase,
-        @IoScheduler private val ioScheduler: Scheduler
+        private val fetchReposUseCase: FetchReposUseCase,
+        @IoScheduler private val ioScheduler: Scheduler,
+        private val githubRepository: GithubRepository
 ) : MviInteractor<RepolistAction, RepolistResult> {
 
     private val initProcessor =
@@ -25,22 +27,32 @@ class RepolistInteractor @Inject constructor(
                 }
         }
 
+    private val dataProcessor =
+        ObservableTransformer<RepolistAction.FetchRepos, RepolistResult> { actions ->
+            actions
+                .distinctUntilChanged { t1, t2 -> t1.user != t2.user }
+                .switchMap { action ->
+                    githubRepository.observeRepos(action.user)
+                        .switchMap { items ->
+                            Observable.fromCallable { RepolistResult.Data(items) }
+                        }
+                }
+        }
+
     private val fetchReposProcessor =
         ObservableTransformer<RepolistAction.FetchRepos, RepolistResult> { actions ->
             actions
                 .switchMap { action ->
-                    fetchReposListUseCase.execute(action.user)
+                    fetchReposUseCase.execute(action.user)
                         .subscribeOn(ioScheduler)
-                        .toObservable()
-                        .switchMap { items ->
-                            Observable.fromCallable { RepolistResult.FetchReposFinish(items) as RepolistResult }
-                        }
+                        .toSingleDefault(RepolistResult.FetchReposFinish as RepolistResult)
                         .onErrorReturn {
                             if (it !is IOException) {
                                 Timber.e(it)
                             }
                             RepolistResult.FetchReposError
                         }
+                        .toObservable()
                         .startWith(RepolistResult.FetchReposStart)
                 }
         }
@@ -58,7 +70,9 @@ class RepolistInteractor @Inject constructor(
                             shared.ofType(RepolistAction.Init::class.java)
                                 .compose(initProcessor),
                             shared.ofType(RepolistAction.FetchRepos::class.java)
-                                .compose(fetchReposProcessor)
+                                .compose(fetchReposProcessor),
+                            shared.ofType(RepolistAction.FetchRepos::class.java)
+                                .compose(dataProcessor)
                         )
                     )
                 }

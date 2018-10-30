@@ -30,7 +30,8 @@ sealed class RepolistResult : MviResult {
     object Init : RepolistResult()
     object FetchReposStart : RepolistResult()
     object FetchReposError : RepolistResult()
-    data class FetchReposFinish(
+    object FetchReposFinish : RepolistResult()
+    data class Data(
             val items: List<Repo>
     ) : RepolistResult()
 
